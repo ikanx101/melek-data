@@ -55,7 +55,7 @@ referensi_nama = data.frame(user_pemohon = user_pemohon_dbase,
 # kita simpan nama departemen untuk kita ganti alias
 dept_pemohon_dbase = df_item_keluar$dept_pemohon_bk %>% unique()
 dept_pemohon_alias = paste0(substr(dept_pemohon_dbase,2,3),
-                            substr(dept_pemohon_dbase,1,1))
+                            substr(dept_pemohon_dbase,1,1)) |> toupper()
 
 # ini adalah referensi departemen
 referensi_dept = data.frame(dept_pemohon_bk = dept_pemohon_dbase,
@@ -86,9 +86,20 @@ df_item_masuk =
          -harga_beli,-total_beli,-bulan,-tahun) %>% 
   rename(dibeli_dari = penjual)
 
+# kita ambil data item keluar
+df_item_keluar = 
+  df_item_keluar |>
+  select(-input_oleh,-nama_item,-bulan,-tahun,
+         -bukti_serah_terima,-no_transaksi)
 
+# kita akan export kembali
+setwd("~/melek-data/Clean")
 
-
-
-
+openxlsx::write.xlsx(dbase_produk,
+                     file = "dbase produk.xlsx")
+openxlsx::write.xlsx(df_item_masuk,
+                     file = "dbase pembelian produk.xlsx")
+openxlsx::write.xlsx(df_item_keluar,
+                     file = "dbase pemberian produk.xlsx")
+# ==============================================================================
 
