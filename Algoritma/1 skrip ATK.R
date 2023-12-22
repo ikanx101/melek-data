@@ -16,7 +16,7 @@ library(tidyr)
 library(readxl)
 
 # kita alihkan path nya ke folder raw data
-setwd("~/melek-data/Raw")
+setwd("~/melek-data/Raw/ATK")
 
 # kita ambil semua sheet dalam file excelnya
 atk_sht = excel_sheets("DAFTAR ITEM ATK.xlsx")
@@ -102,4 +102,3 @@ openxlsx::write.xlsx(df_item_masuk,
 openxlsx::write.xlsx(df_item_keluar,
                      file = "dbase pemberian produk.xlsx")
 # ==============================================================================
-
