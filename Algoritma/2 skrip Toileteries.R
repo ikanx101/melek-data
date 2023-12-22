@@ -17,31 +17,27 @@ library(tidyr)
 library(readxl)
 
 # kita alihkan path nya ke folder raw data
-setwd("~/melek-data/Raw/ATK")
+setwd("~/melek-data/Raw/Toileteries")
 
 # kita ambil semua sheet dalam file excelnya
-atk_sht = excel_sheets("DAFTAR ITEM ATK.xlsx")
+toilet_sht = excel_sheets("DAFTAR ITEM TOILETRIS.xlsx")
 
+# kita akan ambil tiga data terlebih dahulu
 # kita ambil dua data penting
 # data pertama
-df_item_masuk  = read_excel("DAFTAR ITEM ATK.xlsx",
-                            sheet = atk_sht[2]) %>% janitor::clean_names()
+df_item_masuk  = read_excel("DAFTAR ITEM TOILETRIS.xlsx",
+                            sheet = toilet_sht[2]) %>% janitor::clean_names()
 # data kedua
-df_item_keluar = read_excel("DAFTAR ITEM ATK.xlsx",
-                            sheet = atk_sht[3]) %>% janitor::clean_names()
+df_item_keluar = read_excel("DAFTAR ITEM TOILETRIS.xlsx",
+                            sheet = toilet_sht[3]) %>% janitor::clean_names()
 # ==============================================================================
 
 
 # ==============================================================================
 # kita akan rapikan terlebih dahulu datanya
-df_item_masuk =
-  df_item_masuk %>% 
-  filter(total_beli > 0) 
-
 df_item_keluar = 
   df_item_keluar %>% 
-  filter(jml_keluar > 0) %>% 
-  filter(!is.na(user_pemohon))
+  filter(jml_keluar > 0)
 
 # kita simpan nama pemohon untuk kita ganti alias
 user_pemohon_dbase = df_item_keluar$diterima_oleh %>% unique()
