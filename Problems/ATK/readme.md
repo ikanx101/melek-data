@@ -81,7 +81,11 @@ Oleh karena itu, menggunakan data-data yang ada:
 > (pemenuhan stok) yang optimal!
 
 Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan
-strategi tim Anda!
+strategi tim Anda! Silakan gunakan *tools* pengolahan data sesuai dengan
+preferensi tim Anda!
+
+Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan
+`Ms. Excel`.
 
 ## *Discussion*
 

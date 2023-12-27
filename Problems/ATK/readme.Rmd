@@ -68,7 +68,9 @@ Oleh karena itu, menggunakan data-data yang ada:
 
 > Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok) yang optimal! 
 
-Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan strategi tim Anda!
+Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan strategi tim Anda! Silakan gunakan _tools_ pengolahan data sesuai dengan preferensi tim Anda!
+
+Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan `Ms. Excel`.
 
 ## _Discussion_
 
