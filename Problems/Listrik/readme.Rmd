@@ -1,0 +1,80 @@
+---
+title: "Masalah III: Strategi Produk Kelistrikan"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("~/melek-data/Problems/Listrik")
+
+rm(list=ls())
+library(readxl)
+library(dplyr)
+```
+
+# Pendahuluan
+
+## Latar Belakang
+
+Salah satu tugas dari tim _office_ adalah _supporting another department_ dalam hal kebutuhan sarana dan prasarana kerja, termasuk ke dalam pemenuhan kebutuhan yang terkait kelistrikan (lampu, kabel, dll.). Pada periode tertentu, tim _office_ akan membeli produk kelistrikan untuk kemudian akan dipakai sesuai dengan kebutuhan yang ada di kantor. Setiap transaksi masuk dan keluar yang ada dicatat secara otomatis oleh sistem.
+
+Data-data ini disimpan secara rapi namun belum pernah terutilisasi lebih lanjut.
+
+## Data yang Dimiliki
+
+Pada _folder_ ini kalian akan menemukan tiga buah _files_ berformat `.xlsx`, yakni:
+
+### __Data I__: `dbase produk.xlsx`
+
+`dbase produk.xlsx`, yakni _database_ detail produk kelistrikan. Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
+df = read_excel("dbase produk.xlsx")
+str(df)
+```
+
+
+### __Data II__: `dbase pengeluaran produk.xlsx`
+
+`dbase pengeluaran produk.xlsx`, yakni transaksi harian penggunaan produk kelistrikan yang dilakukan tim _office_ ke masing-masing fasilitas kantor. Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
+df = read_excel("dbase pengeluaran produk.xlsx")
+str(df)
+```
+
+### __Data III__: `dbase pembelian produk.xlsx`
+
+`dbase pembelian produk.xlsx`, yakni transaksi pembelian produk kelistrikan yang dilakukan tim _office_ kepada _supplier_. Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
+df = read_excel("dbase pembelian produk.xlsx")
+str(df)
+```
+
+---
+
+# Masalah
+
+## _Problem Statement_
+
+Masalah yang dihadapi oleh tim _office_ adalah:
+
+- Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh.
+- Jika semua produk understok, maka _user_ fasilitas kantor akan gelisah karena fasilitas tidak bisa berfungsi dengan maksimal.
+
+Oleh karena itu, menggunakan data-data yang ada:
+
+> Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok produk kelistrikan) yang optimal! 
+
+Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan strategi tim Anda!
+
+## _Discussion_
+
+Apakah ada:
+
+- Variabel dari data yang tidak digunakan dalam membuat strategi tersebut?
+- Variabel yang belum ada pada data namun diperlukan dalam membuat strategi tersebut? Jika ada, sebutkan dan bahas dalam materi presentasi tim Anda!
+- Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
+
+---
