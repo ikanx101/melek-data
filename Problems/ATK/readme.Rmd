@@ -1,0 +1,22 @@
+---
+title: "Masalah I: Strategi Alat Tulis Kantor"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd("~/melek-data/Problems/ATK")
+```
+
+# Latar Belakang
+
+## Masalah
+
+## Data yang Digunakan
+
+Pada _folder_ ini kalian akan menemukan tiga buah _files_ berformat `.xlsx`, yakni:
+
+1. `dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada _supplier_.
+1. `dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada orang yang meminta (_request_) di masing-masing departemen. 
+1. `dbase produk.xlsx`, yakni _database_ detail produk __alat tulis kantor__.
+
