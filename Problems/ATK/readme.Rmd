@@ -6,17 +6,76 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 setwd("~/melek-data/Problems/ATK")
+
+rm(list=ls())
+library(readxl)
+library(dplyr)
 ```
 
-# Latar Belakang
+# Pendahuluan
 
-## Masalah
+## Latar Belakang
 
-## Data yang Digunakan
+Salah satu tugas dari tim _office_ adalah _supporting another department_ dalam hal kebutuhan sarana dan prasarana kerja, termasuk ke dalam pemenuhan kebutuhan __alat tulis kantor__. Setiap harinya, _user_ di masing-masing departemen bisa melakukan _request_ __alat tulis kantor__ menggunakan sistem IT yang ada. Setiap _request_ tersebut dicatat secara otomatis. Setelah itu, tim _office_ __wajib memenuhi__ _request_ tersebut dan menuliskan rekap pemberian (serah terima) tersebut secara harian.
+
+Data-data ini disimpan secara rapi namun belum pernah terutilisasi lebih lanjut.
+
+## Data yang Dimiliki
 
 Pada _folder_ ini kalian akan menemukan tiga buah _files_ berformat `.xlsx`, yakni:
 
-1. `dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada _supplier_.
-1. `dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada orang yang meminta (_request_) di masing-masing departemen. 
-1. `dbase produk.xlsx`, yakni _database_ detail produk __alat tulis kantor__.
+### __Data I__: `dbase produk.xlsx`
 
+`dbase produk.xlsx`, yakni _database_ detail produk __alat tulis kantor__. Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
+df = read_excel("dbase produk.xlsx")
+str(df)
+```
+
+
+### __Data II__: `dbase pengeluaran produk.xlsx`
+
+`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada orang yang meminta (_request_) di masing-masing departemen. Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
+df = read_excel("dbase pengeluaran produk.xlsx")
+str(df)
+```
+
+### __Data III__: `dbase pembelian produk.xlsx`
+
+`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada _supplier_. Struktur datanya sebagai berikut:
+
+
+```{r,echo=FALSE}
+df = read_excel("dbase pembelian produk.xlsx")
+str(df)
+```
+
+---
+
+# Masalah
+
+## _Problem Statement_
+
+Masalah yang dihadapi oleh tim _office_ adalah:
+
+- Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh.
+- Jika semua produk understok, maka _user_ akan gelisah menunggu kapan _request_-nya bisa didapatkan.
+
+Oleh karena itu, menggunakan data-data yang ada:
+
+> Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok) yang optimal! 
+
+Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan strategi tim Anda!
+
+## _Discussion_
+
+Apakah ada:
+
+- Variabel dari data yang tidak digunakan dalam membuat strategi tersebut?
+- Variabel yang belum ada pada data namun diperlukan dalam membuat strategi tersebut? Jika ada, sebutkan dan bhas dalam materi presentasi tim Anda!
+- Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
+
+---
