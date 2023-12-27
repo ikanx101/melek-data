@@ -90,8 +90,8 @@ Apakah ada:
 - Variabel dari data yang tidak digunakan dalam membuat strategi
   tersebut?
 - Variabel yang belum ada pada data namun diperlukan dalam membuat
-  strategi tersebut? Jika ada, sebutkan dan bhas dalam materi presentasi
-  tim Anda!
+  strategi tersebut? Jika ada, sebutkan dan bahas dalam materi
+  presentasi tim Anda!
 - Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
 
 ------------------------------------------------------------------------

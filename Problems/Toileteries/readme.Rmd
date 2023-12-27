@@ -1,11 +1,11 @@
 ---
-title: "Masalah I: Strategi Alat Tulis Kantor"
+title: "Masalah II: Strategi Produk Toileteries"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-setwd("~/melek-data/Problems/ATK")
+setwd("~/melek-data/Problems/Toileteries")
 
 rm(list=ls())
 library(readxl)
@@ -16,7 +16,7 @@ library(dplyr)
 
 ## Latar Belakang
 
-Salah satu tugas dari tim _office_ adalah _supporting another department_ dalam hal kebutuhan sarana dan prasarana kerja, termasuk ke dalam pemenuhan kebutuhan __alat tulis kantor__. Setiap harinya, _user_ di masing-masing departemen bisa melakukan _request_ __alat tulis kantor__ menggunakan sistem IT yang ada. Setiap _request_ tersebut dicatat secara otomatis. Setelah itu, tim _office_ __wajib memenuhi__ _request_ tersebut dan menuliskan rekap pemberian (serah terima) tersebut secara harian.
+Salah satu tugas dari tim _office_ adalah _supporting another department_ dalam hal kebutuhan sarana dan prasarana kerja, termasuk ke dalam pemenuhan kebutuhan ___toileteries___ (perlengkapan toilet). Pada periode tertentu, tim _office_ akan membeli perlengkapan toilet kemudian didistribusikan oleh tim _cleaning service_. Setiap transaksi masuk dan keluar yang ada dicatat secara otomatis oleh sistem.
 
 Data-data ini disimpan secara rapi namun belum pernah terutilisasi lebih lanjut.
 
@@ -26,7 +26,7 @@ Pada _folder_ ini kalian akan menemukan tiga buah _files_ berformat `.xlsx`, yak
 
 ### __Data I__: `dbase produk.xlsx`
 
-`dbase produk.xlsx`, yakni _database_ detail produk __alat tulis kantor__. Struktur datanya sebagai berikut:
+`dbase produk.xlsx`, yakni _database_ detail produk ___toileteries___. Struktur datanya sebagai berikut:
 
 ```{r,echo=FALSE}
 df = read_excel("dbase produk.xlsx")
@@ -36,7 +36,7 @@ str(df)
 
 ### __Data II__: `dbase pengeluaran produk.xlsx`
 
-`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada orang yang meminta (_request_) di masing-masing departemen. Struktur datanya sebagai berikut:
+`dbase pengeluaran produk.xlsx`, yakni transaksi harian distribusi ___toileteries___ yang dilakukan tim _customer service_ ke masing-masing fasilitas toilet. Struktur datanya sebagai berikut:
 
 ```{r,echo=FALSE}
 df = read_excel("dbase pengeluaran produk.xlsx")
@@ -45,8 +45,7 @@ str(df)
 
 ### __Data III__: `dbase pembelian produk.xlsx`
 
-`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada _supplier_. Struktur datanya sebagai berikut:
-
+`dbase pembelian produk.xlsx`, yakni transaksi pembelian ___toileteries___ yang dilakukan tim _office_ kepada _supplier_. Struktur datanya sebagai berikut:
 
 ```{r,echo=FALSE}
 df = read_excel("dbase pembelian produk.xlsx")
@@ -62,11 +61,11 @@ str(df)
 Masalah yang dihadapi oleh tim _office_ adalah:
 
 - Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh.
-- Jika semua produk understok, maka _user_ akan gelisah menunggu kapan _request_-nya bisa didapatkan.
+- Jika semua produk understok, maka _user_ fasilitas toilet akan gelisah karena perlengkapannya habis.
 
 Oleh karena itu, menggunakan data-data yang ada:
 
-> Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok) yang optimal! 
+> Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok ___toileteries___) yang optimal! 
 
 Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan strategi tim Anda!
 
