@@ -10,14 +10,14 @@
 
 
 # ==============================================================================
-setwd("~/melek-data/Algoritma")
+setwd("~/melek-data/Raw Data/Algoritma Cleaning")
 rm(list=ls())
 library(dplyr)
 library(tidyr)
 library(readxl)
 
 # kita alihkan path nya ke folder raw data
-setwd("~/melek-data/Raw/Toileteries")
+setwd("~/melek-data/Raw Data/Toileteries")
 
 # kita ambil semua sheet dalam file excelnya
 toilet_sht = excel_sheets("DAFTAR ITEM TOILETRIS.xlsx")
@@ -42,33 +42,20 @@ df_item_keluar =
 
 # ==============================================================================
 # kita save terlebih dahulu data itemnya terlebih dahulu
-dbase_produk = 
-  df_item_masuk %>% 
-  select(kode_item,nama_item,satuan,harga_beli) %>% 
-  distinct() %>% 
-  mutate(harga_beli = as.numeric(harga_beli)) |>
-  group_by(kode_item,nama_item,satuan) |>
-  summarise(harga_beli = mean(harga_beli,na.rm = T)) |>
-  ungroup() |>
-  arrange(kode_item) 
-
 # kita ambil data item masuk
 df_item_masuk = 
   df_item_masuk %>% 
-  select(-input_oleh,-no_transaksi,-nama_item,
-         -harga_beli,-total_beli,-penjual,-periode,-nomor_po)
+  select(-input_oleh,-no_transaksi,-periode,-nomor_po)
 
 # kita ambil data item keluar
 df_item_keluar = 
   df_item_keluar |>
-  select(-input_oleh,-nama_item,-keterangan,
+  select(-input_oleh,-keterangan,
          -no_transaksi,-periode)
 
 # kita akan export kembali
-setwd("~/melek-data/Clean/Toileteries")
+setwd("~/melek-data/Problems/Toileteries")
 
-openxlsx::write.xlsx(dbase_produk,
-                     file = "dbase produk.xlsx")
 openxlsx::write.xlsx(df_item_masuk,
                      file = "dbase pembelian produk.xlsx")
 openxlsx::write.xlsx(df_item_keluar,
