@@ -22,28 +22,18 @@ Data-data ini disimpan secara rapi namun belum pernah terutilisasi lebih lanjut.
 
 ## Data yang Dimiliki
 
-Pada _folder_ ini kalian akan menemukan tiga buah _files_ berformat `.xlsx`, yakni:
+Pada _folder_ ini kalian akan menemukan dua buah _files_ berformat `.xlsx`, yakni:
 
-### __Data I__: `dbase produk.xlsx`
-
-`dbase produk.xlsx`, yakni _database_ detail produk ___toileteries___. Struktur datanya sebagai berikut:
-
-```{r,echo=FALSE}
-df = read_excel("dbase produk.xlsx")
-str(df)
-```
-
-
-### __Data II__: `dbase pengeluaran produk.xlsx`
+### __Data I__: `dbase pengeluaran produk.xlsx`
 
 `dbase pengeluaran produk.xlsx`, yakni transaksi harian distribusi ___toileteries___ yang dilakukan tim _customer service_ ke masing-masing fasilitas toilet. Struktur datanya sebagai berikut:
 
 ```{r,echo=FALSE}
-df = read_excel("dbase pengeluaran produk.xlsx")
+df = read_excel("dbase pemberian produk.xlsx")
 str(df)
 ```
 
-### __Data III__: `dbase pembelian produk.xlsx`
+### __Data II__: `dbase pembelian produk.xlsx`
 
 `dbase pembelian produk.xlsx`, yakni transaksi pembelian ___toileteries___ yang dilakukan tim _office_ kepada _supplier_. Struktur datanya sebagai berikut:
 
