@@ -26,20 +26,31 @@ Pada _folder_ ini kalian akan menemukan dua buah _files_ berformat `.xlsx`, yakn
 
 ### __Data I__: `dbase pengeluaran produk.xlsx`
 
-`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada orang yang meminta (_request_) di masing-masing departemen. Struktur datanya sebagai berikut:
+`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada orang yang meminta (_request_) di masing-masing departemen. Berikut adalah sampel dari data yang ada:
 
 ```{r,echo=FALSE}
 df = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
+df[1:10,] |> knitr::kable()
+```
+
+Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
 str(df)
 ```
 
 ### __Data II__: `dbase pembelian produk.xlsx`
 
-`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada _supplier_. Struktur datanya sebagai berikut:
-
+`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk __alat tulis kantor__ yang dilakukan tim _office_ kepada _supplier_. Berikut adalah sampel datanya:
 
 ```{r,echo=FALSE}
 df = read_excel("~/melek-data/Problems/ATK/dbase pembelian produk.xlsx")
+df[1:10,] |> knitr::kable()
+```
+
+Struktur datanya sebagai berikut:
+
+```{r,echo=FALSE}
 str(df)
 ```
 
