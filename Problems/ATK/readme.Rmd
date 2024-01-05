@@ -1,6 +1,8 @@
 ---
 title: "Masalah I: Strategi Alat Tulis Kantor"
-output: github_document
+output: 
+  github_document:
+    pandoc_args: --webtex
 ---
 
 ```{r setup, include=FALSE}
@@ -80,5 +82,19 @@ Apakah ada:
 - Variabel dari data yang tidak digunakan dalam membuat strategi tersebut?
 - Variabel yang belum ada pada data namun diperlukan dalam membuat strategi tersebut? Jika ada, sebutkan dan bahas dalam materi presentasi tim Anda!
 - Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
+
+
+## _Hints_
+
+Untuk membantu menyelesaikan masalah ini, Anda bisa mempertimbangkan untuk melakukan beberapa hal berikut ini:
+
+1. Membuat pre-analisa berupa analisa deskriptif dari kedua data tersebut.
+1. Melakukan transformasi kepada data yang memiliki _range_ yang sangat lebar. Transformasi yang bisa dilakukan antara lain:
+    1. _Scaling_ dengan formula berikut: $\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}$.
+    1. _Standardization_ dengan formula berikut: $\hat{X} = \frac{X-\bar{X}}{\sigma_X}$.
+    1. Fungsi logaritmik dengan formula berikut: $\hat{X} = \log{X}$.
+    1. Fungsi transformasi _Tukey_ lainnya.
+    
+## Selamat Mengerjakan!
 
 ---
