@@ -1,5 +1,5 @@
 ---
-title: "Masalah I: Strategi Alat Tulis Kantor"
+title: "Masalah: Strategi Alat Tulis Kantor"
 output: 
   github_document:
     pandoc_args: --webtex

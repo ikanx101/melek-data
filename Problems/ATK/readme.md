@@ -1,4 +1,4 @@
-Masalah I: Strategi Alat Tulis Kantor
+Masalah: Strategi Alat Tulis Kantor
 ================
 
 # Pendahuluan
