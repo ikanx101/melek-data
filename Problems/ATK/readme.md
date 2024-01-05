@@ -128,15 +128,24 @@ untuk melakukan beberapa hal berikut ini:
 
 1.  Membuat pre-analisa berupa analisa deskriptif dari kedua data
     tersebut.
-2.  Melakukan transformasi kepada data yang memiliki *range* yang sangat
+2.  *Make it simple!* Sesuaikan tujuan dengan metode dan analisa yang
+    digunakan.
+3.  Melakukan transformasi kepada data yang memiliki *range* yang sangat
     lebar. Transformasi yang bisa dilakukan antara lain:
-    1.  *Scaling* dengan formula berikut:
-        ![\\hat{X} = \\frac{X-\\bar{X}}{X\_{max}-X\_{min}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7BX_%7Bmax%7D-X_%7Bmin%7D%7D "\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}").
-    2.  *Standardization* dengan formula berikut:
-        ![\\hat{X} = \\frac{X-\\bar{X}}{\\sigma_X}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7B%5Csigma_X%7D "\hat{X} = \frac{X-\bar{X}}{\sigma_X}").
-    3.  Fungsi logaritmik dengan formula berikut:
-        ![\\hat{X} = \\log{X}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Clog%7BX%7D "\hat{X} = \log{X}").
-    4.  Fungsi transformasi *Tukey* lainnya.
+
+*Scaling* dengan formula berikut:
+
+![\\hat{X} = \\frac{X-\\bar{X}}{X\_{max}-X\_{min}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7BX_%7Bmax%7D-X_%7Bmin%7D%7D "\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}")
+
+*Standardization* dengan formula berikut:
+
+![\\hat{X} = \\frac{X-\\bar{X}}{\\sigma_X}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7B%5Csigma_X%7D "\hat{X} = \frac{X-\bar{X}}{\sigma_X}")
+
+Fungsi logaritmik dengan formula berikut:
+
+![\\hat{X} = \\log{X}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Clog%7BX%7D "\hat{X} = \log{X}")
+
+Fungsi transformasi *Tukey* lainnya.
 
 ## Selamat Mengerjakan!
 
