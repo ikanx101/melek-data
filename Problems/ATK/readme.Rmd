@@ -89,7 +89,7 @@ Apakah ada:
 Untuk membantu menyelesaikan masalah ini, Anda bisa mempertimbangkan untuk melakukan beberapa hal berikut ini:
 
 1. Membuat pre-analisa berupa analisa deskriptif dari kedua data tersebut.
-1. _Make it simple!_ Sesuaikan tujuan dengan metode dan analisa yang digunakan.
+1. _Keep it simple!_ Seringkali masalah yang terlihat rumit dan kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau analisa yang digunakan.
 1. Melakukan transformasi kepada data yang memiliki _range_ yang sangat lebar. Transformasi yang bisa dilakukan antara lain:
 
 _Scaling_ dengan formula berikut: 
