@@ -93,10 +93,10 @@ Struktur datanya sebagai berikut:
 
 Masalah yang dihadapi oleh tim *office* adalah:
 
--   Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh
-    atau ada kemungkinan barang tidak terpakai.
--   Jika semua produk understok, maka *user* akan gelisah menunggu kapan
-    *request*-nya bisa didapatkan.
+- Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh
+  atau ada kemungkinan barang tidak terpakai.
+- Jika semua produk understok, maka *user* akan gelisah menunggu kapan
+  *request*-nya bisa didapatkan.
 
 Oleh karena itu, menggunakan data-data yang ada:
 
@@ -114,12 +114,12 @@ Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan
 
 Apakah ada:
 
--   Variabel dari data yang tidak digunakan dalam membuat strategi
-    tersebut?
--   Variabel yang belum ada pada data namun diperlukan dalam membuat
-    strategi tersebut? Jika ada, sebutkan dan bahas dalam materi
-    presentasi tim Anda!
--   Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
+- Variabel dari data yang tidak digunakan dalam membuat strategi
+  tersebut?
+- Variabel yang belum ada pada data namun diperlukan dalam membuat
+  strategi tersebut? Jika ada, sebutkan dan bahas dalam materi
+  presentasi tim Anda!
+- Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
 
 ## *Hints*
 
@@ -128,22 +128,24 @@ untuk melakukan beberapa hal berikut ini:
 
 1.  Membuat pre-analisa berupa analisa deskriptif dari kedua data
     tersebut.
-2.  *Make it simple!* Sesuaikan tujuan dengan metode dan analisa yang
-    digunakan.
+2.  *Keep it simple!* Seringkali masalah yang terlihat rumit dan
+    kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana
+    jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau
+    analisa yang digunakan.
 3.  Melakukan transformasi kepada data yang memiliki *range* yang sangat
     lebar. Transformasi yang bisa dilakukan antara lain:
 
 *Scaling* dengan formula berikut:
 
-![\\hat{X} = \\frac{X-\\bar{X}}{X\_{max}-X\_{min}}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7BX_%7Bmax%7D-X_%7Bmin%7D%7D "\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}")
+![\hat{X} = \frac{X-\bar{X}}{X\_{max}-X\_{min}}](https://latex.codecogs.com/png.latex?%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7BX_%7Bmax%7D-X_%7Bmin%7D%7D "\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}")
 
 *Standardization* dengan formula berikut:
 
-![\\hat{X} = \\frac{X-\\bar{X}}{\\sigma_X}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7B%5Csigma_X%7D "\hat{X} = \frac{X-\bar{X}}{\sigma_X}")
+![\hat{X} = \frac{X-\bar{X}}{\sigma_X}](https://latex.codecogs.com/png.latex?%5Chat%7BX%7D%20%3D%20%5Cfrac%7BX-%5Cbar%7BX%7D%7D%7B%5Csigma_X%7D "\hat{X} = \frac{X-\bar{X}}{\sigma_X}")
 
 Fungsi logaritmik dengan formula berikut:
 
-![\\hat{X} = \\log{X}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BX%7D%20%3D%20%5Clog%7BX%7D "\hat{X} = \log{X}")
+![\hat{X} = \log{X}](https://latex.codecogs.com/png.latex?%5Chat%7BX%7D%20%3D%20%5Clog%7BX%7D "\hat{X} = \log{X}")
 
 Fungsi transformasi *Tukey* lainnya.
 
