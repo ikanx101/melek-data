@@ -103,9 +103,9 @@ Oleh karena itu, menggunakan data-data yang ada:
 > Bantu tim *office* membuat strategi ***inbound - outbound***
 > (pemenuhan stok) yang optimal!
 
-Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan
-strategi tim Anda! Silakan gunakan *tools* pengolahan data sesuai dengan
-preferensi tim Anda!
+Buat **satu materi presentasi sederhana** yang bisa menjelaskan **ide
+dan strategi tim Anda!** Silakan gunakan *tools* pengolahan data sesuai
+dengan preferensi tim Anda!
 
 Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan
 `Ms. Excel`.
@@ -128,7 +128,7 @@ untuk melakukan beberapa hal berikut ini:
 
 1.  Membuat pre-analisa berupa analisa deskriptif dari kedua data
     tersebut.
-2.  *Keep it simple!* Seringkali masalah yang terlihat rumit dan
+2.  ***Keep it simple!*** Seringkali masalah yang terlihat rumit dan
     kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana
     jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau
     analisa yang digunakan.
@@ -150,5 +150,8 @@ Fungsi logaritmik dengan formula berikut:
 Fungsi transformasi *Tukey* lainnya.
 
 ## Selamat Mengerjakan!
+
+*Notes:* Setiap tim diperbolehkan bertanya kepada *observer* sebanyak
+**tiga kali!**
 
 ------------------------------------------------------------------------

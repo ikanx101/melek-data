@@ -69,9 +69,9 @@ Masalah yang dihadapi oleh tim _office_ adalah:
 
 Oleh karena itu, menggunakan data-data yang ada:
 
-> Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok) yang optimal! 
+> Bantu tim _office_ membuat strategi ___inbound - outbound___ (pemenuhan stok) yang optimal!
 
-Buat satu materi presentasi sederhana yang bisa menjelaskan ide dan strategi tim Anda! Silakan gunakan _tools_ pengolahan data sesuai dengan preferensi tim Anda!
+Buat __satu materi presentasi sederhana__ yang bisa menjelaskan __ide dan strategi tim Anda!__ Silakan gunakan _tools_ pengolahan data sesuai dengan preferensi tim Anda!
 
 Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan `Ms. Excel`.
 
@@ -89,7 +89,7 @@ Apakah ada:
 Untuk membantu menyelesaikan masalah ini, Anda bisa mempertimbangkan untuk melakukan beberapa hal berikut ini:
 
 1. Membuat pre-analisa berupa analisa deskriptif dari kedua data tersebut.
-1. _Keep it simple!_ Seringkali masalah yang terlihat rumit dan kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau analisa yang digunakan.
+1. ___Keep it simple!___ Seringkali masalah yang terlihat rumit dan kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau analisa yang digunakan.
 1. Melakukan transformasi kepada data yang memiliki _range_ yang sangat lebar. Transformasi yang bisa dilakukan antara lain:
 
 _Scaling_ dengan formula berikut: 
@@ -107,5 +107,7 @@ $$\hat{X} = \log{X}$$
 Fungsi transformasi _Tukey_ lainnya.
     
 ## Selamat Mengerjakan!
+
+_Notes:_ Setiap tim diperbolehkan bertanya kepada _observer_ sebanyak __tiga kali!__
 
 ---
