@@ -64,7 +64,7 @@ str(df)
 
 Masalah yang dihadapi oleh tim _office_ adalah:
 
-- Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh atau ada kemungkinan barang tidak terpakai.
+- Jika semua produk overstok, maka __bisa jadi__ ada kemungkinan barang terlalu lama "parkir" di gundang dan tidak terpakai.
 - Jika semua produk understok, maka _user_ akan gelisah menunggu kapan _request_-nya bisa didapatkan.
 
 Oleh karena itu, menggunakan data-data yang ada:
@@ -89,6 +89,7 @@ Apakah ada:
 Untuk membantu menyelesaikan masalah ini, Anda bisa mempertimbangkan untuk melakukan beberapa hal berikut ini:
 
 1. Membuat pre-analisa berupa analisa deskriptif dari kedua data tersebut.
+1. Strategi yang bisa dipertimbangkan: _cost efficiency_ atau _service level_.
 1. ___Keep it simple!___ Seringkali masalah yang terlihat rumit dan kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau analisa yang digunakan.
 1. Melakukan transformasi kepada data yang memiliki _range_ yang sangat lebar. Transformasi yang bisa dilakukan antara lain:
 

@@ -93,8 +93,8 @@ Struktur datanya sebagai berikut:
 
 Masalah yang dihadapi oleh tim *office* adalah:
 
-- Jika semua produk overstok, maka gudang penyimpanan berpotensi penuh
-  atau ada kemungkinan barang tidak terpakai.
+- Jika semua produk overstok, maka **bisa jadi** ada kemungkinan barang
+  terlalu lama “parkir” di gundang dan tidak terpakai.
 - Jika semua produk understok, maka *user* akan gelisah menunggu kapan
   *request*-nya bisa didapatkan.
 
@@ -128,11 +128,13 @@ untuk melakukan beberapa hal berikut ini:
 
 1.  Membuat pre-analisa berupa analisa deskriptif dari kedua data
     tersebut.
-2.  ***Keep it simple!*** Seringkali masalah yang terlihat rumit dan
+2.  Strategi yang bisa dipertimbangkan: *cost efficiency* atau *service
+    level*.
+3.  ***Keep it simple!*** Seringkali masalah yang terlihat rumit dan
     kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana
     jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau
     analisa yang digunakan.
-3.  Melakukan transformasi kepada data yang memiliki *range* yang sangat
+4.  Melakukan transformasi kepada data yang memiliki *range* yang sangat
     lebar. Transformasi yang bisa dilakukan antara lain:
 
 *Scaling* dengan formula berikut:
