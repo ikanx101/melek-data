@@ -1,5 +1,5 @@
 ---
-title: "Masalah: Strategi Alat Tulis Kantor"
+title: "Masalah: Strategi Pemenuhan Kebutuhan Alat Tulis Kantor"
 output: 
   github_document:
     pandoc_args: --webtex
@@ -64,7 +64,7 @@ str(df)
 
 Masalah yang dihadapi oleh tim _office_ adalah:
 
-- Jika semua produk overstok, maka __bisa jadi__ ada kemungkinan barang terlalu lama "parkir" di gundang dan tidak terpakai.
+- Jika semua produk overstok, maka __bisa jadi__ ada kemungkinan barang terlalu lama "parkir" di gudang dan tidak terpakai.
 - Jika semua produk understok, maka _user_ akan gelisah menunggu kapan _request_-nya bisa didapatkan.
 
 Oleh karena itu, menggunakan data-data yang ada:

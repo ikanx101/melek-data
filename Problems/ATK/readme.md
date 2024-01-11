@@ -1,4 +1,4 @@
-Masalah: Strategi Alat Tulis Kantor
+Masalah: Strategi Pemenuhan Kebutuhan Alat Tulis Kantor
 ================
 
 # Pendahuluan
@@ -94,7 +94,7 @@ Struktur datanya sebagai berikut:
 Masalah yang dihadapi oleh tim *office* adalah:
 
 - Jika semua produk overstok, maka **bisa jadi** ada kemungkinan barang
-  terlalu lama “parkir” di gundang dan tidak terpakai.
+  terlalu lama “parkir” di gudang dan tidak terpakai.
 - Jika semua produk understok, maka *user* akan gelisah menunggu kapan
   *request*-nya bisa didapatkan.
 
