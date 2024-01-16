@@ -213,13 +213,89 @@ df_1 |>
        y = "Range Harga (Rp)")
 ```
 
-#### Data Pengeluaran Produk
+Dari grafik di atas, kita melihat _range_ harga yang cukup jauh di beberapa jenis satuan. Oleh karena itu, kami melakukan transformasi logaritmik agar _range_-nya menjadi lebih _comparable_.
 
-```{r}
-df_2 = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
+```{r,fig.align='center',fig.retina=8}
+# plot tentang harga per jenis satuan barang ATK
+df_1 |>
+  mutate(satuan = tolower(satuan),
+         satuan = trimws(satuan)) |>
+  select(satuan,harga_beli) |>
+  distinct() |>
+  mutate(harga_beli = as.numeric(harga_beli)) |>
+  group_by(satuan) |>
+  mutate(harga_beli = log(harga_beli)) |>
+  summarise(min = min(harga_beli),
+            max = max(harga_beli),
+            mean = mean(harga_beli,na.rm = T)) |>
+  ungroup() |>
+  ggplot() +
+  geom_errorbar(aes(x = satuan,ymin = min,ymax = max),
+                width = .2) +
+  geom_point(aes(x = satuan,y = mean),shape = 4,color = "darkred") +
+  labs(title = "Range Log Harga ATK per Jenis Satuannya") +
+  theme_minimal() +
+  labs(subtitle = "Sumber: data pembelian ATK",
+       x = "Jenis Satuan ATK",
+       y = "Range Harga (Rp) - logaritmik")
 ```
 
 
+#### Data Pengeluaran Produk
+
+```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
+# import data
+df_2 = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
+
+# kita enrich terlebih dahulu sesuai dengan df_1
+df_2 = 
+  df_2 |>
+  mutate(bulan = lubridate::month(tanggal),
+         tahun = lubridate::year(tanggal)) |>
+  mutate(periode = paste(bulan,tahun,sep = "-"),
+         periode = factor(periode,levels = periode_default))
+
+tabel_1 = 
+  df_2 |>
+  group_by(tahun,nama_item) |>
+  summarise(outbound = sum(jml_keluar)) |>
+  ungroup() |>
+  reshape2::dcast(nama_item ~ tahun,value.var = "outbound") |>
+  arrange(desc(`2023`)) |>
+  rename("Nama ATK" = nama_item) |>
+  head(20) 
+
+tabel_1 |>
+  knitr::kable(align = "c",caption = "Total Serah Terima ATK per Tahun (20 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
+
+tabel_2 = 
+  df_2 |>
+  filter(tahun == 2023) |>
+  filter(nama_item %in% tabel_1$`Nama ATK`) |>
+  group_by(nama_item,bulan) |>
+  summarise(outbound = sum(jml_keluar)) |>
+  ungroup() |>
+  reshape2::dcast(nama_item ~ bulan,value.var = "outbound")
+  
+tabel_2[is.na(tabel_2)] = 0
+
+tabel_2 |> 
+  rename("Nama ATK" = nama_item) |>
+  knitr::kable(align = "c",caption = "Total Serah Terima ATK per Bulan (20 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
+```
+
 
 ## Langkah Pengerjaan
+
+Langkah pengerjaan yang kami lakukan adalah:
+
+1. Melakukan analisa deskriptif.
+    - Apa ada variabel yang perlu atau tidak perlu dimasukkan?
+    - Melihat _time range_ yang dijadikan basis strategi _inbound-outbound_ ATK.
+1. Melakukan _clustering_ untuk mengelompokkan ATK sesuai dengan kesamaan karakteristiknya.
+    - Apakah bisa dibuat strategi berdasarkan kelompok ATK yang dibuat?
+    - Apakah ada perhitungan _safety stock_ yang spesifik di setiap _cluster_ tersebut?
+
+## _Clustering Analysis_
+
 
