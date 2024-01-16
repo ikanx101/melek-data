@@ -26,6 +26,7 @@ setwd("~/melek-data/Problems/ATK/Alternatif Jawaban")
 rm(list=ls())
 library(readxl)
 library(dplyr)
+library(ggplot2)
 ```
 
 # Pendahuluan
@@ -120,7 +121,7 @@ $$\hat{X} = \log{X}$$
 
 Fungsi transformasi *Tukey* lainnya.
 
-## Selamat Mengerjakan!
+___Selamat Mengerjakan!___
 
 *Notes:* Setiap tim diperbolehkan bertanya kepada *observer* sebanyak **tiga kali!**
 
@@ -134,7 +135,91 @@ Pada bagian ini, kami memberikan __satu alternatif jawaban__ yang bisa digunakan
 
 ## Tujuan
 
-Tujuan utama dari analisa ini adalah memberikan masukan berupa strategi pemenuhan ATK tim _office_, yakni bagaimana melakukan _inbound_ dan _outbound_ dari ATK yang ada. __Kunci pemenuhan ATK__ terletak dari bagaimana tim _office_ membeli dan melakukan proses _stocking_ yang baik. Oleh karena itu, kami tidak menggunakan _dataset_ pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari _dataset_ tersebut.
+Tujuan utama dari analisa ini adalah memberikan masukan berupa strategi pemenuhan ATK tim _office_, yakni bagaimana melakukan _inbound_ dan _outbound_ dari ATK yang ada. 
+
+__Kunci pemenuhan ATK__ terletak dari bagaimana tim _office_ membeli dan melakukan proses _stocking_ yang baik. Oleh karena itu, kami tidak menggunakan _dataset_ pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari _dataset_ tersebut.
+
+Untuk bisa membeli dengan tepat, kita bisa membagi seluruh ATK menjadi kelompok-kelompok sesuai dengan karakteristiknya. Pada analisa ini, kami membagi ATK sesuai dengan:
+
+1. __Harga__ dan
+1. __Banyaknya__ ___request___ terhadap ATK tersebut pada tahun 2023. Kenapa _range_ waktunya dipersempit? 
+
+> Kita bisa melakukan beberapa pre-analisa terlebih dahulu.
+
+### Pre-Analisa
+
+#### Data Pembelian ATK
+
+```{r,fig.align='center',fig.retina=8}
+# kita panggil datanya
+df_1 = read_excel("~/melek-data/Problems/ATK/dbase pembelian produk.xlsx")
+
+# buat default periodenya
+periode_default = c(paste(1:12,2018,sep = "-"),
+                    paste(1:12,2019,sep = "-"),
+                    paste(1:12,2020,sep = "-"),
+                    paste(1:12,2021,sep = "-"),
+                    paste(1:12,2022,sep = "-"),
+                    paste(1:12,2023,sep = "-"))
+
+# kita enrich dulu untuk perhitungan
+df_1 = 
+  df_1 |>
+  mutate(bulan = lubridate::month(tanggal),
+         tahun = lubridate::year(tanggal)) |>
+  mutate(periode = paste(bulan,tahun,sep = "-"),
+         periode = factor(periode,levels = periode_default))
+
+# plot pertama
+df_1 |>
+  group_by(periode) |>
+  summarise(beli = sum(total_beli)) |>
+  ungroup() |>
+  mutate(label = beli / 10^6,
+         label = round(label,1),
+         label = paste0("Rp",label,"jt")) |>
+  ggplot(aes(x = periode,
+             y = beli)) +
+  geom_line(group = 1,color = "steelblue") +
+  geom_text(aes(label = label),alpha = .5,size = 1.5) +
+  scale_x_discrete(guide = guide_axis(n.dodge=4)) +
+  theme_minimal() +
+  labs(title = "Trend Pembelian ATK per Bulan",
+       subtitle = "Sumber: data pembelian ATK",
+       x = "Periode",
+       y = "Total Pembelian (Rp)") +
+  theme(axis.text.y = element_blank())
+
+# plot tentang harga per jenis satuan barang ATK
+df_1 |>
+  mutate(satuan = tolower(satuan),
+         satuan = trimws(satuan)) |>
+  select(satuan,harga_beli) |>
+  distinct() |>
+  mutate(harga_beli = as.numeric(harga_beli)) |>
+  group_by(satuan) |>
+  summarise(min = min(harga_beli),
+            max = max(harga_beli),
+            mean = mean(harga_beli,na.rm = T)) |>
+  ungroup() |>
+  ggplot() +
+  geom_errorbar(aes(x = satuan,ymin = min,ymax = max),
+                width = .2) +
+  geom_point(aes(x = satuan,y = mean),shape = 4,color = "darkred") +
+  labs(title = "Range Harga ATK per Jenis Satuannya") +
+  theme_minimal() +
+  labs(subtitle = "Sumber: data pembelian ATK",
+       x = "Jenis Satuan ATK",
+       y = "Range Harga (Rp)")
+```
+
+#### Data Pengeluaran Produk
+
+```{r}
+df_2 = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
+```
+
+
 
 ## Langkah Pengerjaan
 
