@@ -1,0 +1,140 @@
+---
+title: "Alternatif Jawaban: Permasalahan Pemenuhan ATK Office"
+subtitle: "Workshop Melek Data"
+date: "`r format(Sys.Date(),'%d %B %Y')`"
+author: "Departemen Market Research - Nutrifood Indonesia"
+format: 
+  html:
+    theme: darkly
+    toc: true
+    toc-depth: 4
+    toc-expand: 3
+    toc-title: "Daftar Isi"
+    toc-location: right
+    html-math-method: katex
+    code-fold: true
+    code-line-numbers: true
+    code-summary: "Buka Skrip!"
+    embed-resources: true
+    self-contained-math: true
+editor: visual
+---
+
+```{r, include=FALSE}
+setwd("~/melek-data/Problems/ATK/Alternatif Jawaban")
+
+rm(list=ls())
+library(readxl)
+library(dplyr)
+```
+
+# Pendahuluan
+
+## Latar Belakang
+
+Salah satu tugas dari tim *office* adalah *supporting another department* dalam hal kebutuhan sarana dan prasarana kerja, termasuk ke dalam pemenuhan kebutuhan **alat tulis kantor**. Setiap harinya, *user* di masing-masing departemen bisa melakukan *request* **alat tulis kantor** menggunakan sistem IT yang ada. Setiap *request* tersebut dicatat secara otomatis. Setelah itu, tim *office* **wajib memenuhi** *request* tersebut dan menuliskan rekap pemberian (serah terima) tersebut secara harian.
+
+Data-data ini disimpan secara rapi namun belum pernah terutilisasi lebih lanjut.
+
+## Data yang Dimiliki
+
+Pada *folder* ini kalian akan menemukan dua buah *files* berformat `.xlsx`, yakni:
+
+### **Data I**: `dbase pengeluaran produk.xlsx`
+
+`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk **alat tulis kantor** yang dilakukan tim *office* kepada orang yang meminta (*request*) di masing-masing departemen. Berikut adalah sampel dari data yang ada:
+
+```{r}
+df = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
+df[1:10,] |> knitr::kable()
+```
+
+Struktur datanya sebagai berikut:
+
+```{r}
+str(df)
+```
+
+### **Data II**: `dbase pembelian produk.xlsx`
+
+`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk **alat tulis kantor** yang dilakukan tim *office* kepada *supplier*. Berikut adalah sampel datanya:
+
+```{r}
+df = read_excel("~/melek-data/Problems/ATK/dbase pembelian produk.xlsx")
+df[1:10,] |> knitr::kable()
+```
+
+Struktur datanya sebagai berikut:
+
+```{r}
+str(df)
+```
+
+---
+
+# Masalah
+
+## *Problem Statement*
+
+Masalah yang dihadapi oleh tim *office* adalah:
+
+-   Jika semua produk overstok, maka **bisa jadi** ada kemungkinan barang terlalu lama "parkir" di gudang dan tidak terpakai.
+-   Jika semua produk understok, maka *user* akan gelisah menunggu kapan *request*-nya bisa didapatkan.
+
+Oleh karena itu, menggunakan data-data yang ada:
+
+> Bantu tim *office* membuat strategi ***inbound - outbound*** (pemenuhan stok) yang optimal!
+
+Buat **satu materi presentasi sederhana** yang bisa menjelaskan **ide dan strategi tim Anda!** Silakan gunakan *tools* pengolahan data sesuai dengan preferensi tim Anda!
+
+Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan `Ms. Excel`.
+
+## *Discussion*
+
+Apakah ada:
+
+-   Variabel dari data yang tidak digunakan dalam membuat strategi tersebut?
+-   Variabel yang belum ada pada data namun diperlukan dalam membuat strategi tersebut? Jika ada, sebutkan dan bahas dalam materi presentasi tim Anda!
+-   Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
+
+## *Hints*
+
+Untuk membantu menyelesaikan masalah ini, Anda bisa mempertimbangkan untuk melakukan beberapa hal berikut ini:
+
+1.  Membuat pre-analisa berupa analisa deskriptif dari kedua data tersebut.
+2.  Strategi yang bisa dipertimbangkan: *cost efficiency* atau *service level*.
+3.  ***Keep it simple!*** Seringkali masalah yang terlihat rumit dan kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau analisa yang digunakan.
+4.  Melakukan transformasi kepada data yang memiliki *range* yang sangat lebar. Transformasi yang bisa dilakukan antara lain:
+
+*Scaling* dengan formula berikut:
+
+$$\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}$$
+
+*Standardization* dengan formula berikut:
+
+$$\hat{X} = \frac{X-\bar{X}}{\sigma_X}$$
+
+Fungsi logaritmik dengan formula berikut:
+
+$$\hat{X} = \log{X}$$
+
+Fungsi transformasi *Tukey* lainnya.
+
+## Selamat Mengerjakan!
+
+*Notes:* Setiap tim diperbolehkan bertanya kepada *observer* sebanyak **tiga kali!**
+
+---
+
+# Alternatif Jawaban
+
+Permasalah di atas bisa diselesaikan dengan berbagai macam jawaban. Asumsi yang dipakai juga bisa beragam. Namun, walaupun tidak ada jawaban benar dan salah, kita tetap bisa menguji apakah asumsi yang kita gunakan logis atau tidak.
+
+Pada bagian ini, kami memberikan __satu alternatif jawaban__ yang bisa digunakan.
+
+## Tujuan
+
+Tujuan utama dari analisa ini adalah memberikan masukan berupa strategi pemenuhan ATK tim _office_, yakni bagaimana melakukan _inbound_ dan _outbound_ dari ATK yang ada. __Kunci pemenuhan ATK__ terletak dari bagaimana tim _office_ membeli dan melakukan proses _stocking_ yang baik. Oleh karena itu, kami tidak menggunakan _dataset_ pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari _dataset_ tersebut.
+
+## Langkah Pengerjaan
+
