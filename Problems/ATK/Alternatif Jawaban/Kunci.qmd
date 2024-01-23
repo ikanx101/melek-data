@@ -1,26 +1,37 @@
 ---
-title: "Alternatif Jawaban: Permasalahan Pemenuhan ATK Office"
-subtitle: "Workshop Melek Data"
-date: "`r format(Sys.Date(),'%d %B %Y')`"
-author: "Departemen Market Research - Nutrifood Indonesia"
+subtitle: "Alternatif Jawaban: Permasalahan Pemenuhan ATK Office"
+title: "Workshop Melek Data"
+author: "Departemen Market Research"
+institute: Nutrifood Indonesia
 format: 
-  html:
-    theme: darkly
-    toc: true
-    toc-depth: 4
-    toc-expand: 3
-    toc-title: "Daftar Isi"
-    toc-location: right
-    html-math-method: katex
-    code-fold: true
-    code-line-numbers: true
-    code-summary: "Buka Skrip!"
-    embed-resources: true
-    self-contained-math: true
+  revealjs:
+    theme: dark
+    logo: logo.png
+    css: logo.css
+    slide-number: true
+    footer: Melek Data Series
+    incremental: false
+    show-slide-number: all
+    transition: convex
+    width: 1280
+    height: 720
+    highlight-style: arrow-dark
+    output-location: column
+    code-overflow: scroll
+    scrollable: true
+    fig-dpi: 500
+    fig-format: svg
 editor: visual
+execute: 
+  echo: false
+  warning: false
+  message: false
 ---
 
-```{r, include=FALSE}
+```{r}
+#| echo: false
+#| include: false
+
 setwd("~/melek-data/Problems/ATK/Alternatif Jawaban")
 
 rm(list=ls())
@@ -32,51 +43,45 @@ library(epoxy)
 
 # Pendahuluan
 
-## Latar Belakang
+## Latar Belakang {.center}
 
 Salah satu tugas dari tim *office* adalah *supporting another department* dalam hal kebutuhan sarana dan prasarana kerja, termasuk ke dalam pemenuhan kebutuhan **alat tulis kantor**. Setiap harinya, *user* di masing-masing departemen bisa melakukan *request* **alat tulis kantor** menggunakan sistem IT yang ada. Setiap *request* tersebut dicatat secara otomatis. Setelah itu, tim *office* **wajib memenuhi** *request* tersebut dan menuliskan rekap pemberian (serah terima) tersebut secara harian.
 
 Data-data ini disimpan secara rapi namun belum pernah terutilisasi lebih lanjut.
 
-## Data yang Dimiliki
+## Data yang Dimiliki {.center .smaller}
 
 Pada *folder* ini kalian akan menemukan dua buah *files* berformat `.xlsx`, yakni:
 
 ### **Data I**: `dbase pengeluaran produk.xlsx`
 
-`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk **alat tulis kantor** yang dilakukan tim *office* kepada orang yang meminta (*request*) di masing-masing departemen. Berikut adalah sampel dari data yang ada:
-
-```{r}
-df = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
-df[1:10,] |> knitr::kable()
-```
-
-Struktur datanya sebagai berikut:
-
-```{r}
-str(df)
-```
+`dbase pengeluaran produk.xlsx`, yakni transaksi harian pemberian produk **alat tulis kantor** yang dilakukan tim *office* kepada orang yang meminta (*request*) di masing-masing departemen.
 
 ### **Data II**: `dbase pembelian produk.xlsx`
 
-`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk **alat tulis kantor** yang dilakukan tim *office* kepada *supplier*. Berikut adalah sampel datanya:
+`dbase pembelian produk.xlsx`, yakni transaksi harian pembelian produk **alat tulis kantor** yang dilakukan tim *office* kepada *supplier*.
+
+## **Data I**: `dbase pengeluaran produk.xlsx` {.center .smaller}
+
+Sampel data pengeluaran produk.
+
+```{r}
+df = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
+df[1:3,] |> knitr::kable()
+```
+
+## **Data II**: `dbase pembelian produk.xlsx` {.center .smaller}
+
+Sampel data pembelian produk.
 
 ```{r}
 df = read_excel("~/melek-data/Problems/ATK/dbase pembelian produk.xlsx")
-df[1:10,] |> knitr::kable()
+df[2:4,] |> knitr::kable()
 ```
-
-Struktur datanya sebagai berikut:
-
-```{r}
-str(df)
-```
-
-------------------------------------------------------------------------
 
 # Masalah
 
-## *Problem Statement*
+## *Problem Statement* {.center .smaller}
 
 Masalah yang dihadapi oleh tim *office* adalah:
 
@@ -91,7 +96,7 @@ Buat **satu materi presentasi sederhana** yang bisa menjelaskan **ide dan strate
 
 Catatan: data ini dirancang untuk bisa diselesaikan cukup dengan `Ms. Excel`.
 
-## *Discussion*
+## *Discussion* {.center}
 
 Apakah ada:
 
@@ -99,59 +104,65 @@ Apakah ada:
 -   Variabel yang belum ada pada data namun diperlukan dalam membuat strategi tersebut? Jika ada, sebutkan dan bahas dalam materi presentasi tim Anda!
 -   Asumsi yang tim Anda gunakan dalam membuat strategi tersebut?
 
-## *Hints*
+## *Hints* {.center .smaller}
 
 Untuk membantu menyelesaikan masalah ini, Anda bisa mempertimbangkan untuk melakukan beberapa hal berikut ini:
 
 1.  Membuat pre-analisa berupa analisa deskriptif dari kedua data tersebut.
 2.  Strategi yang bisa dipertimbangkan: *cost efficiency* atau *service level*.
 3.  ***Keep it simple!*** Seringkali masalah yang terlihat rumit dan kompleks sebenarnya bisa diselesaikan dengan pendekatan sederhana jika kita benar-benar bisa menyesuaikan tujuan dengan metode atau analisa yang digunakan.
-4.  Melakukan transformasi kepada data yang memiliki *range* yang sangat lebar. Transformasi yang bisa dilakukan antara lain:
+4.  Melakukan transformasi kepada data yang memiliki *range* yang sangat lebar.
 
-*Scaling* dengan formula berikut:
-
-$$\hat{X} = \frac{X-\bar{X}}{X_{max}-X_{min}}$$
-
-*Standardization* dengan formula berikut:
-
-$$\hat{X} = \frac{X-\bar{X}}{\sigma_X}$$
-
-Fungsi logaritmik dengan formula berikut:
-
-$$\hat{X} = \log{X}$$
-
-Fungsi transformasi *Tukey* lainnya.
-
-***Selamat Mengerjakan!***
+# *SELAMAT MENGERJAKAN!* {.unlisted .unnumbered .center .smaller}
 
 *Notes:* Setiap tim diperbolehkan bertanya kepada *observer* sebanyak **tiga kali!**
 
-------------------------------------------------------------------------
-
 # Alternatif Jawaban
 
-Permasalah di atas bisa diselesaikan dengan berbagai macam jawaban. Asumsi yang dipakai juga bisa beragam. Namun, walaupun tidak ada jawaban benar dan salah, kita tetap bisa menguji apakah asumsi yang kita gunakan logis atau tidak.
+## *Remarks* {.center}
+
+Permasalah ini bisa diselesaikan dengan berbagai macam jawaban. Asumsi yang dipakai juga bisa beragam. Namun, walaupun tidak ada jawaban benar dan salah, kita tetap bisa menguji apakah asumsi yang kita gunakan logis atau tidak.
 
 Pada bagian ini, kami memberikan **satu alternatif jawaban** yang bisa digunakan.
 
-## Tujuan
+## Tujuan {.center}
 
-Tujuan utama dari analisa ini adalah memberikan masukan berupa strategi pemenuhan ATK tim *office*, yakni bagaimana melakukan *inbound* dan *outbound* dari ATK yang ada.
+Tujuan utama dari analisa ini adalah __memberikan masukan berupa strategi pemenuhan ATK__ kepada tim *office*, yakni bagaimana melakukan *inbound* dan *outbound* dari ATK yang ada.
 
-**Kunci pemenuhan ATK** terletak dari bagaimana tim *office* membeli dan melakukan proses *stocking* yang baik. Oleh karena itu, kami tidak menggunakan *dataset* pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari *dataset* tersebut.
+## Tujuan {.center .unlisted .unnumbered}
 
-Untuk bisa membeli dengan tepat, kita bisa membagi seluruh ATK menjadi kelompok-kelompok sesuai dengan karakteristiknya. Pada analisa ini, kami membagi ATK sesuai dengan:
+**Kunci pemenuhan ATK** terletak dari bagaimana tim *office* __membeli dan melakukan proses__ *stocking* yang baik. 
+
+> Oleh karena itu, kami tidak menggunakan *dataset* pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari *dataset* tersebut.
+
+## Tujuan {.center .unlisted .unnumbered}
+
+Untuk bisa membeli ATK dengan tepat, kita bisa membagi ATK menjadi kelompok-kelompok yang memiliki karakteristik yang sama. 
+
+Pada analisa ini, kami akan mencari karakteristik dari semua ATK berdasarkan dua variabel yang menurut kami paling penting dalam menentukan strategi pembelian, yakni:
 
 1.  **Harga** dan
-2.  **Banyaknya** ***request*** terhadap ATK tersebut pada tahun 2023. Kenapa *range* waktunya dipersempit?
+2.  **Banyaknya** ***request*** terhadap ATK tersebut pada tahun 2023. 
 
-> Kita bisa melakukan beberapa pre-analisa terlebih dahulu.
+## Langkah Pengerjaan {.center .smaller}
 
-### Pre-Analisa
+Langkah pengerjaan yang kami lakukan adalah:
 
-#### Data Pembelian ATK
+1.  Melakukan analisa deskriptif.
+    -   Apa ada variabel yang perlu atau tidak perlu dimasukkan?
+    -   Melihat *time range* yang dijadikan basis strategi *inbound-outbound* ATK.
+2.  Melakukan *clustering* untuk mengelompokkan ATK sesuai dengan kesamaan karakteristiknya.
+    -   Apakah bisa dibuat strategi berdasarkan kelompok ATK yang dibuat?
+    -   Apakah ada perhitungan *safety stock* yang spesifik di setiap *cluster* tersebut?
 
-```{r,fig.align='center',fig.retina=8}
+# Pre-Analisa Data Pembelian ATK
+
+## Tren Pembelian ATK {.center .smaller}
+
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
+
 # kita panggil datanya
 df_1 = read_excel("~/melek-data/Problems/ATK/dbase pembelian produk.xlsx")
 
@@ -182,7 +193,7 @@ df_1 |>
   ggplot(aes(x = periode,
              y = beli)) +
   geom_line(group = 1,color = "steelblue") +
-  geom_text(aes(label = label),alpha = .5,size = 1.5) +
+  geom_text(aes(label = label),alpha = .5,size = 2.5) +
   scale_x_discrete(guide = guide_axis(n.dodge=4)) +
   theme_minimal() +
   labs(title = "Trend Pembelian ATK per Bulan",
@@ -190,6 +201,13 @@ df_1 |>
        x = "Periode",
        y = "Total Pembelian (Rp)") +
   theme(axis.text.y = element_blank())
+```
+
+## _Range_ Harga ATK {.center .smaller}
+
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
 
 # plot tentang harga per jenis satuan barang ATK
 df_1 |>
@@ -214,9 +232,15 @@ df_1 |>
        y = "Range Harga (Rp)")
 ```
 
-Dari grafik di atas, kita melihat *range* harga yang cukup jauh di beberapa jenis satuan. Oleh karena itu, kami melakukan transformasi logaritmik agar *range*-nya menjadi lebih *comparable*.
+## _Range_ Harga ATK {.center .smaller}
 
-```{r,fig.align='center',fig.retina=8}
+::: columns
+::: {.column width="80%"}
+
+```{r,fig.height=3}
+#| fig-align: center
+#| fig-asp: 0.5625
+
 # plot tentang harga per jenis satuan barang ATK
 df_1 |>
   mutate(satuan = tolower(satuan),
@@ -241,9 +265,21 @@ df_1 |>
        y = "Range Harga (Rp) - logaritmik")
 ```
 
-#### Data Pengeluaran Produk
+:::
+::: {.column width="20%"}
 
-```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
+Dari grafik sebelumnya, kita melihat *range* harga yang cukup jauh di beberapa jenis satuan. Oleh karena itu, kami melakukan transformasi `logaritmik` agar *range*-nya menjadi lebih *comparable*.
+
+:::
+::: 
+
+# Pre-Analisa Data Pengeluaran ATK
+
+## Data Serah Terima ATK per Tahun {.center .smaller}
+
+```{r}
+#| df-print: paged
+#| 
 # import data
 df_2 = read_excel("~/melek-data/Problems/ATK/dbase pengeluaran produk.xlsx")
 
@@ -263,11 +299,15 @@ tabel_1 =
   reshape2::dcast(nama_item ~ tahun,value.var = "outbound") |>
   arrange(desc(`2023`)) |>
   rename("Nama ATK" = nama_item) |>
-  head(20) 
+  head(10) 
 
 tabel_1 |>
-  knitr::kable(align = "c",caption = "Total Serah Terima ATK per Tahun (20 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
+  knitr::kable(align = "c",caption = "Total Serah Terima ATK per Tahun (10 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
+```
 
+## Data Serah Terima ATK per Bulan Pada 2023 {.center .smaller}
+
+```{r}
 tabel_2 = 
   df_2 |>
   filter(tahun == 2023) |>
@@ -281,22 +321,12 @@ tabel_2[is.na(tabel_2)] = 0
 
 tabel_2 |> 
   rename("Nama ATK" = nama_item) |>
-  knitr::kable(align = "c",caption = "Total Serah Terima ATK per Bulan (20 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
+  knitr::kable(align = "c",caption = "Total Serah Terima ATK per Bulan (10 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
 ```
 
-## Langkah Pengerjaan
+# _Clustering Analysis_
 
-Langkah pengerjaan yang kami lakukan adalah:
-
-1.  Melakukan analisa deskriptif.
-    -   Apa ada variabel yang perlu atau tidak perlu dimasukkan?
-    -   Melihat *time range* yang dijadikan basis strategi *inbound-outbound* ATK.
-2.  Melakukan *clustering* untuk mengelompokkan ATK sesuai dengan kesamaan karakteristiknya.
-    -   Apakah bisa dibuat strategi berdasarkan kelompok ATK yang dibuat?
-    -   Apakah ada perhitungan *safety stock* yang spesifik di setiap *cluster* tersebut?
-
-
-## *Clustering Analysis*
+## *Clustering Analysis* {.center}
 
 Tujuan utama _clustering_ ini adalah:
 
@@ -304,7 +334,8 @@ Tujuan utama _clustering_ ini adalah:
 
 Salah satu cara termudah untuk melakukan _clustering_ __tanpa menggunakan__ ___machine learning___ adalah dengan melakukan _clustering_ secara visual.
 
-### _Clustering_ Secara Visual
+
+## _Clustering_ Secara Visual {.center .smaller}
 
 Untuk melakukan _clustering_ secara visual, kita akan memilih dua variabel penting, yakni: `harga` dan `total request` untuk kemudian dibuat _scatterplot_-nya.
 
@@ -334,14 +365,18 @@ df_final = merge(temp_1,temp_2,all.x = T)
 df_final %>% 
   select(nama_item,harga,outbound) %>% 
   arrange(desc(outbound)) %>%
-  head(20) %>% 
-  knitr::kable(align = "c",caption = "Sample Top 20 Data ATK: Harga dan Outbound")
+  head(7) %>% 
+  knitr::kable(align = "c",caption = "Sample Top 7 Data ATK: Harga dan Outbound")
 ```
 
+## _Clustering_ Secara Visual {.center .smaller .unlisted .unnumbered}
 
-Kita buat _scatterplot_-nya sebagai berikut:
+Kita buat _scatterplot_ dari data sebelumnya sebagai berikut:
 
-```{r,fig.align='center',fig.retina=8}
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
+
 df_final %>% 
   ggplot(aes(y = outbound,
              x = harga)) +
@@ -352,9 +387,14 @@ df_final %>%
        y = "Outbound")
 ```
 
-Oleh karena _range_ datanya terlalu jauh sehingga bentuk _scatterplot_-nya tidak konklusif, maka kita akan lakukan transformaasi dengan menggunakan fungsi logaritmik. Kemudian kita akan bagi _scatterplot_ menjadi __empat kuadran__ sebagai berikut:
+## _Clustering_ Secara Visual {.center .smaller .unlisted .unnumbered}
 
-```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
+::: columns
+::: {.column width="80%"}
+
+```{r, fig.height=3}
+#| fig-align: center
+#| fig-asp: 0.5625
 harga_log    = log(df_final$harga) %>% mean()
 outbound_log = log(df_final$outbound) %>% mean()
 
@@ -386,144 +426,28 @@ df_kuadran =
     harga < harga_log & outbound > outbound_log ~ "Kuadran 4"
   ))
 
+kuadran = data.frame(kuadran = 1:4,
+                     price   = c("high price","high price","low price","low price"),
+                     demand  = c("high demand","low demand","low demand","high demand"))
+
 df_kuadran %>% 
   group_by(kuadran_ke) %>% 
   tally() %>% 
   ungroup()
-
-kuadran = data.frame(kuadran = 1:4,
-                     price   = c("high price","high price","low price","low price"),
-                     demand  = c("high demand","low demand","low demand","high demand"))
 ```
 
+:::
+::: {.column width="20%"}
+
+Oleh karena _range_ datanya terlalu jauh sehingga bentuk _scatterplot_-nya tidak konklusif, maka kita akan lakukan transformasi dengan menggunakan fungsi logaritmik. Kemudian kita akan bagi _scatterplot_ menjadi __empat kuadran__ sebagai berikut.
+
+:::
+:::
+
+## Empat Kuadran Hasil _Clustering_ {.center .smaller}
 
 Kita bisa dapatkan empat kuadran sebagai berikut:
 
 ```{epoxy .data = kuadran}
-1. __Kuadran {kuadran}__, yakni ATK yang memiliki _{price}_ dan _{demand}_.
+1. __Kuadran {kuadran}__, yakni ATK yang memiliki `{price}` dan `{demand}`.
 ```
-
-```{r,include=FALSE}
-plot_detail = function(nama_item_sel){
-# df pembelian
-x_temp_1 = 
-  df_1 %>% 
-  filter(tahun == 2023) %>% 
-  filter(nama_item == nama_item_sel) %>% 
-  group_by(nama_item,periode) %>% 
-  summarise(inbound = sum(jml_masuk)) %>% 
-  ungroup()
-
-# df pengeluaran
-x_temp_2 = 
-  df_2 %>% 
-  filter(tahun == 2023) %>% 
-  filter(nama_item == nama_item_sel) %>%
-  group_by(nama_item,periode) %>% 
-  summarise(outbound = sum(jml_keluar)) %>% 
-  ungroup()
-
-# gabung dulu
-x_temp = merge(x_temp_1,x_temp_2,all = T)
-x_temp[is.na(x_temp)] = 0
-
-# buat grafiknya
-x_temp %>% 
-  select(-nama_item) %>% 
-  reshape2::melt(id.vars = "periode") %>% 
-  ggplot(aes(x = periode,
-             y = value)) +
-  geom_line(aes(group = variable,color = variable)) +
-  scale_x_discrete(guide = guide_axis(n.dodge=4)) +
-  theme_bw() +
-  labs(color = "Keterangan",
-       x = "Periode",
-       y = "Pcs",
-       title = "Inbound vs Outbound pada 2023",
-       subtitle = nama_item_sel)
-}
-
-```
-
-#### Strategi Kuadran I
-
-Strategi yang bisa dilakukan adalah:
-
-- Melakukan pembelian ATK secara berkala (pada waktu tertentu - tidak di setiap bulan) tergantung dari siklus permintaan ATK dari _user_.
-    - Perhitungan stok bisa dihitung dari total permintaan ATK untuk beberapa bulan sebelum pembelian.
-    - Overstok masih diperbolehkan.
-- Oleh karena harga ATK mahal dan diperlukan banyak, kita bisa meminta diskon khusus kepada _supplier_.
-
-Sebagai contoh, berikut adalah transaksi _inbound_ dan _outbound_ dari beberapa ATK pada kuadran I:
-
-```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
-item_sel = "Materai 10000"
-plot_detail(item_sel)
-
-item_sel = "KERTAS A4 80GR"
-plot_detail(item_sel)
-
-item_sel = "AMPLOP COKLAT NUTRIFOOD"
-plot_detail(item_sel)
-```
-
-#### Strategi Kuadran II
-
-Strategi yang bisa dilakukan adalah:
-
-- Melakukan pembelian ATK secara hati-hati agar tidak overstok.
-    - Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, __ATAU__
-    - Pembelian dilakukan ketika ada permintaan namun _user_ bisa diinformasikan mengenai _leadtime_ pengadaan ATK.
-
-Sebagai contoh, berikut adalah transaksi _inbound_ dan _outbound_ dari beberapa ATK pada kuadran II:
-
-```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
-item_sel = "CALCULATOR CITIZEN SDC 868-L"
-plot_detail(item_sel)
-
-item_sel = "POCKET BANTEX 2044"
-plot_detail(item_sel)
-
-item_sel = "CUTTER BESAR"
-plot_detail(item_sel)
-```
-
-#### Strategi Kuadran III
-
-Strategi yang bisa dilakukan adalah:
-
-- Melakukan pembelian ATK secara hati-hati agar tidak overstok.
-    - Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, __ATAU__
-    - Oleh karena ATK ini termasuk ke dalam kategori _low price_, bisa diasumsikan bahwa produk ATK ini memiliki _leadtime_ yang juga cepat. Maka kita bisa lakukan pembelian secara mendadak saat ada permintaan. Tidak perlu ada stok yang disimpan.
-    
-```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
-item_sel = "BUKU KWITANSI BESAR"
-plot_detail(item_sel)
-
-item_sel = "ISI STAPLES NO.3"
-plot_detail(item_sel)
-
-item_sel = "STABILO BOSS"
-plot_detail(item_sel)
-```
-
-#### Strategi Kuadran IV
-
-Strategi yang bisa dilakukan adalah:
-
-- Melakukan pembelian ATK dengan mempertimbangkan stok aman masing-masing ATK pada waktu yang dibutuhkan.
-    - Perhitungan _safety stok_ bisa memanfaatkan prinsip perhitungan DOI ATK agar tidak terjadi overstok.
-- Oleh karena ATK ini termasuk ke dalam kategori _low price_, bisa diasumsikan bahwa produk ATK ini memiliki _leadtime_ yang juga cepat.
-
-```{r,fig.align='center',fig.retina=8,message=FALSE,warning=FALSE}
-item_sel = "BALLPOINT HITAM"
-plot_detail(item_sel)
-
-item_sel = "MAP BENING CLEAR SLEEVE F4"
-plot_detail(item_sel)
-
-item_sel = "PAPER CLIP No. 5"
-plot_detail(item_sel)
-```
-
-
