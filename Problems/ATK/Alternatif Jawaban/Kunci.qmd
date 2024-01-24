@@ -125,32 +125,11 @@ Permasalah ini bisa diselesaikan dengan berbagai macam jawaban. Asumsi yang dipa
 
 Pada bagian ini, kami memberikan **satu alternatif jawaban** yang bisa digunakan.
 
-## Tujuan {.center}
-
-Tujuan utama dari analisa ini adalah __memberikan masukan berupa strategi pemenuhan ATK__ kepada tim *office*, yakni bagaimana melakukan *inbound* dan *outbound* dari ATK yang ada.
-
-## Tujuan {.center .unlisted .unnumbered}
-
-**Kunci pemenuhan ATK** terletak dari bagaimana tim *office* __membeli dan melakukan proses__ *stocking* yang baik. 
-
-> Oleh karena itu, kami tidak menggunakan *dataset* pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari *dataset* tersebut.
-
-## Tujuan {.center .unlisted .unnumbered}
-
-Untuk bisa membeli ATK dengan tepat, kita bisa membagi ATK menjadi kelompok-kelompok yang memiliki karakteristik yang sama. 
-
-Pada analisa ini, kami akan mencari karakteristik dari semua ATK berdasarkan dua variabel yang menurut kami paling penting dalam menentukan strategi pembelian, yakni:
-
-1.  **Harga** dan
-2.  **Banyaknya** ***request*** terhadap ATK tersebut pada tahun 2023. 
-
 ## Langkah Pengerjaan {.center .smaller}
 
 Langkah pengerjaan yang kami lakukan adalah:
 
 1.  Melakukan analisa deskriptif.
-    -   Apa ada variabel yang perlu atau tidak perlu dimasukkan?
-    -   Melihat *time range* yang dijadikan basis strategi *inbound-outbound* ATK.
 2.  Melakukan *clustering* untuk mengelompokkan ATK sesuai dengan kesamaan karakteristiknya.
     -   Apakah bisa dibuat strategi berdasarkan kelompok ATK yang dibuat?
     -   Apakah ada perhitungan *safety stock* yang spesifik di setiap *cluster* tersebut?
@@ -203,7 +182,7 @@ df_1 |>
   theme(axis.text.y = element_blank())
 ```
 
-## _Range_ Harga ATK {.center .smaller}
+## *Range* Harga ATK {.center .smaller}
 
 ```{r}
 #| fig-align: center
@@ -232,11 +211,10 @@ df_1 |>
        y = "Range Harga (Rp)")
 ```
 
-## _Range_ Harga ATK {.center .smaller}
+## *Range* Harga ATK {.center .smaller}
 
 ::: columns
 ::: {.column width="80%"}
-
 ```{r,fig.height=3}
 #| fig-align: center
 #| fig-asp: 0.5625
@@ -264,14 +242,12 @@ df_1 |>
        x = "Jenis Satuan ATK",
        y = "Range Harga (Rp) - logaritmik")
 ```
-
 :::
+
 ::: {.column width="20%"}
-
 Dari grafik sebelumnya, kita melihat *range* harga yang cukup jauh di beberapa jenis satuan. Oleh karena itu, kami melakukan transformasi `logaritmik` agar *range*-nya menjadi lebih *comparable*.
-
 :::
-::: 
+:::
 
 # Pre-Analisa Data Pengeluaran ATK
 
@@ -324,22 +300,46 @@ tabel_2 |>
   knitr::kable(align = "c",caption = "Total Serah Terima ATK per Bulan (10 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
 ```
 
-# _Clustering Analysis_
+
+
+## Tujuan {.center}
+
+Tujuan utama dari analisa ini adalah **memberikan masukan berupa strategi pemenuhan ATK** kepada tim *office*, yakni bagaimana melakukan *inbound* dan *outbound* dari ATK yang ada.
+
+## Tujuan {.center .unlisted .unnumbered}
+
+**Kunci pemenuhan ATK** terletak dari bagaimana tim *office* **membeli dan melakukan proses** *stocking* yang baik.
+
+> Oleh karena itu, kami tidak menggunakan *dataset* pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari *dataset* tersebut.
+
+- Kenapa hanya variabel `harga` saja yang dianggap penting dari _dataset_ pembelian ATK?
+    - Karena kita bisa membuat pengelompokkan berdasarkan `harga` yang ada.
+    
+## Tujuan {.center .unlisted .unnumbered}
+
+Untuk bisa membeli ATK dengan tepat, kita bisa membagi ATK menjadi kelompok-kelompok yang memiliki karakteristik yang sama.
+
+Pada analisa ini, kami akan mencari karakteristik dari semua ATK berdasarkan dua variabel yang menurut kami paling penting dalam menentukan strategi pembelian, yakni:
+
+1.  **Harga** dan
+2.  **Banyaknya** ***request*** terhadap ATK tersebut pada tahun 2023.
+
+
+# *Clustering Analysis*
 
 ## *Clustering Analysis* {.center}
 
-Tujuan utama _clustering_ ini adalah:
+Tujuan utama *clustering* ini adalah:
 
-> Mengelompokkan ATK yang memiliki karakteristik yang sama sehingga strategi ___inbound - outbound___ bisa disusun berdasarkan kelompok-kelompok tersebut.
+> Mengelompokkan ATK yang memiliki karakteristik yang sama sehingga strategi ***inbound - outbound*** bisa disusun berdasarkan kelompok-kelompok tersebut.
 
-Salah satu cara termudah untuk melakukan _clustering_ __tanpa menggunakan__ ___machine learning___ adalah dengan melakukan _clustering_ secara visual.
+Salah satu cara termudah untuk melakukan *clustering* **tanpa menggunakan** ***machine learning*** adalah dengan melakukan *clustering* secara visual.
 
+## *Clustering* Secara Visual {.center .smaller}
 
-## _Clustering_ Secara Visual {.center .smaller}
+Untuk melakukan *clustering* secara visual, kita akan memilih dua variabel penting, yakni: `harga` dan `total request` untuk kemudian dibuat *scatterplot*-nya.
 
-Untuk melakukan _clustering_ secara visual, kita akan memilih dua variabel penting, yakni: `harga` dan `total request` untuk kemudian dibuat _scatterplot_-nya.
-
-Berikut adalah _sample_ data variabel `harga` dan `total request` yang telah disatukan dari kedua _datasets_ di atas:
+Berikut adalah *sample* data variabel `harga` dan `total request` yang telah disatukan dari kedua *datasets* di atas:
 
 ```{r,warning=FALSE,message=FALSE}
 # kita ambil harga dan inbound
@@ -369,9 +369,9 @@ df_final %>%
   knitr::kable(align = "c",caption = "Sample Top 7 Data ATK: Harga dan Outbound")
 ```
 
-## _Clustering_ Secara Visual {.center .smaller .unlisted .unnumbered}
+## *Clustering* Secara Visual {.center .smaller .unlisted .unnumbered}
 
-Kita buat _scatterplot_ dari data sebelumnya sebagai berikut:
+Kita buat *scatterplot* dari data sebelumnya sebagai berikut:
 
 ```{r}
 #| fig-align: center
@@ -387,11 +387,10 @@ df_final %>%
        y = "Outbound")
 ```
 
-## _Clustering_ Secara Visual {.center .smaller .unlisted .unnumbered}
+## *Clustering* Secara Visual {.center .smaller .unlisted .unnumbered}
 
 ::: columns
 ::: {.column width="80%"}
-
 ```{r, fig.height=3}
 #| fig-align: center
 #| fig-asp: 0.5625
@@ -427,27 +426,188 @@ df_kuadran =
   ))
 
 kuadran = data.frame(kuadran = 1:4,
-                     price   = c("high price","high price","low price","low price"),
-                     demand  = c("high demand","low demand","low demand","high demand"))
+                     price   = c("high price","high price",
+                                 "low price","low price"),
+                     demand  = c("high demand","low demand",
+                                 "low demand","high demand"),
+                     n_produk = c(14,17,16,15))
 
-df_kuadran %>% 
-  group_by(kuadran_ke) %>% 
-  tally() %>% 
-  ungroup()
 ```
-
 :::
+
 ::: {.column width="20%"}
-
-Oleh karena _range_ datanya terlalu jauh sehingga bentuk _scatterplot_-nya tidak konklusif, maka kita akan lakukan transformasi dengan menggunakan fungsi logaritmik. Kemudian kita akan bagi _scatterplot_ menjadi __empat kuadran__ sebagai berikut.
-
+Oleh karena *range* datanya terlalu jauh sehingga bentuk *scatterplot*-nya tidak konklusif, maka kita akan lakukan transformasi dengan menggunakan fungsi logaritmik. Kemudian kita akan bagi *scatterplot* menjadi **empat kuadran** sebagai berikut.
 :::
 :::
 
-## Empat Kuadran Hasil _Clustering_ {.center .smaller}
+## Empat Kuadran Hasil *Clustering* {.center .smaller}
 
 Kita bisa dapatkan empat kuadran sebagai berikut:
 
 ```{epoxy .data = kuadran}
-1. __Kuadran {kuadran}__, yakni ATK yang memiliki `{price}` dan `{demand}`.
+1. __Kuadran {kuadran}__, yakni berisi `{n_produk}` buah ATK yang memiliki `{price}` dan `{demand}`.
 ```
+
+```{r,include=FALSE}
+plot_detail = function(nama_item_sel){
+# df pembelian
+x_temp_1 = 
+  df_1 %>% 
+  filter(tahun == 2023) %>% 
+  filter(nama_item == nama_item_sel) %>% 
+  group_by(nama_item,periode) %>% 
+  summarise(inbound = sum(jml_masuk)) %>% 
+  ungroup()
+
+# df pengeluaran
+x_temp_2 = 
+  df_2 %>% 
+  filter(tahun == 2023) %>% 
+  filter(nama_item == nama_item_sel) %>%
+  group_by(nama_item,periode) %>% 
+  summarise(outbound = sum(jml_keluar)) %>% 
+  ungroup()
+
+# gabung dulu
+x_temp = merge(x_temp_1,x_temp_2,all = T)
+x_temp[is.na(x_temp)] = 0
+
+# buat grafiknya
+x_temp %>% 
+  select(-nama_item) %>% 
+  reshape2::melt(id.vars = "periode") %>% 
+  ggplot(aes(x = periode,
+             y = value)) +
+  geom_line(aes(group = variable,color = variable)) +
+  scale_x_discrete(guide = guide_axis(n.dodge=4)) +
+  theme_bw() +
+  labs(color = "Keterangan",
+       x = "Periode",
+       y = "Pcs",
+       title = "Inbound vs Outbound pada 2023",
+       subtitle = nama_item_sel) +
+  theme(legend.position = "bottom")
+}
+
+```
+
+# Strategi per Kuadran
+
+## Strategi Kuadran I
+
+### _High Price - High Demand_
+
+-   Melakukan pembelian ATK secara berkala (pada waktu tertentu - tidak di setiap bulan) tergantung dari siklus permintaan ATK dari *user*.
+    -   Perhitungan stok bisa dihitung dari total permintaan ATK untuk beberapa bulan sebelum pembelian.
+    -   Overstok masih diperbolehkan.
+-   Oleh karena harga ATK mahal dan diperlukan banyak, kita bisa meminta diskon khusus kepada *supplier*.
+
+---
+
+Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran I:
+
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
+
+item_sel = "Materai 10000"
+p1 = plot_detail(item_sel)
+
+item_sel = "KERTAS A4 80GR"
+p2 = plot_detail(item_sel)
+
+item_sel = "AMPLOP COKLAT NUTRIFOOD"
+p3 = plot_detail(item_sel)
+
+ggpubr::ggarrange(p1,p2,p3,ncol = 3)
+```
+
+## Strategi Kuadran II
+
+### _High Price - Low Demand_
+
+-   Melakukan pembelian ATK secara hati-hati agar tidak overstok.
+    -   Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, **ATAU**
+    -   Pembelian dilakukan ketika ada permintaan namun *user* bisa diinformasikan mengenai *leadtime* pengadaan ATK.
+
+---
+
+Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran II:
+
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
+
+item_sel = "CALCULATOR CITIZEN SDC 868-L"
+p1 = plot_detail(item_sel)
+
+item_sel = "POCKET BANTEX 2044"
+p2 = plot_detail(item_sel)
+
+item_sel = "CUTTER BESAR"
+p3 = plot_detail(item_sel)
+
+ggpubr::ggarrange(p1,p2,p3,ncol = 3)
+```
+
+
+## Strategi Kuadran III
+
+### _Low Price - Low Demand_
+
+-   Melakukan pembelian ATK secara hati-hati agar tidak overstok.
+    -   Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, **ATAU**
+    -   Oleh karena ATK ini termasuk ke dalam kategori *low price*, bisa diasumsikan bahwa produk ATK ini memiliki *leadtime* yang juga cepat. Maka kita bisa lakukan pembelian secara mendadak saat ada permintaan. Tidak perlu ada stok yang disimpan.
+
+---
+
+Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran III:
+
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
+
+item_sel = "BUKU KWITANSI BESAR"
+p1 = plot_detail(item_sel)
+
+item_sel = "ISI STAPLES NO.3"
+p2 = plot_detail(item_sel)
+
+item_sel = "STABILO BOSS"
+p3 = plot_detail(item_sel)
+
+ggpubr::ggarrange(p1,p2,p3,ncol = 3)
+```
+
+
+## Strategi Kuadran IV
+
+### _Low Price - High Demand_
+
+-   Melakukan pembelian ATK dengan mempertimbangkan stok aman masing-masing ATK pada waktu yang dibutuhkan.
+    -   Perhitungan *safety stok* bisa memanfaatkan prinsip perhitungan DOI ATK agar tidak terjadi overstok.
+-   Oleh karena ATK ini termasuk ke dalam kategori *low price*, bisa diasumsikan bahwa produk ATK ini memiliki *leadtime* yang juga cepat.
+
+---
+
+Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran IV:
+
+```{r}
+#| fig-align: center
+#| fig-asp: 0.5625
+
+item_sel = "BALLPOINT HITAM"
+p1 = plot_detail(item_sel)
+
+item_sel = "MAP BENING CLEAR SLEEVE F4"
+p2 = plot_detail(item_sel)
+
+item_sel = "PAPER CLIP No. 5"
+p3 = plot_detail(item_sel)
+
+ggpubr::ggarrange(p1,p2,p3,ncol = 3)
+```
+
+
+# Terima Kasih
+

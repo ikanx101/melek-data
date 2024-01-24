@@ -541,35 +541,11 @@ Departemen Market Research
 <p>Permasalah ini bisa diselesaikan dengan berbagai macam jawaban. Asumsi yang dipakai juga bisa beragam. Namun, walaupun tidak ada jawaban benar dan salah, kita tetap bisa menguji apakah asumsi yang kita gunakan logis atau tidak.</p>
 <p>Pada bagian ini, kami memberikan <strong>satu alternatif jawaban</strong> yang bisa digunakan.</p>
 </section>
-<section id="tujuan" class="slide level2 center">
-<h2>Tujuan</h2>
-<p>Tujuan utama dari analisa ini adalah <strong>memberikan masukan berupa strategi pemenuhan ATK</strong> kepada tim <em>office</em>, yakni bagaimana melakukan <em>inbound</em> dan <em>outbound</em> dari ATK yang ada.</p>
-</section>
-<section id="tujuan-1" class="slide level2 center unlisted unnumbered">
-<h2>Tujuan</h2>
-<p><strong>Kunci pemenuhan ATK</strong> terletak dari bagaimana tim <em>office</em> <strong>membeli dan melakukan proses</strong> <em>stocking</em> yang baik.</p>
-<blockquote>
-<p>Oleh karena itu, kami tidak menggunakan <em>dataset</em> pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari <em>dataset</em> tersebut.</p>
-</blockquote>
-</section>
-<section id="tujuan-2" class="slide level2 center unlisted unnumbered">
-<h2>Tujuan</h2>
-<p>Untuk bisa membeli ATK dengan tepat, kita bisa membagi ATK menjadi kelompok-kelompok yang memiliki karakteristik yang sama.</p>
-<p>Pada analisa ini, kami akan mencari karakteristik dari semua ATK berdasarkan dua variabel yang menurut kami paling penting dalam menentukan strategi pembelian, yakni:</p>
-<ol type="1">
-<li><strong>Harga</strong> dan</li>
-<li><strong>Banyaknya</strong> <strong><em>request</em></strong> terhadap ATK tersebut pada tahun 2023.</li>
-</ol>
-</section>
 <section id="langkah-pengerjaan" class="slide level2 center smaller">
 <h2>Langkah Pengerjaan</h2>
 <p>Langkah pengerjaan yang kami lakukan adalah:</p>
 <ol type="1">
-<li>Melakukan analisa deskriptif.
-<ul>
-<li>Apa ada variabel yang perlu atau tidak perlu dimasukkan?</li>
-<li>Melihat <em>time range</em> yang dijadikan basis strategi <em>inbound-outbound</em> ATK.</li>
-</ul></li>
+<li>Melakukan analisa deskriptif.</li>
 <li>Melakukan <em>clustering</em> untuk mengelompokkan ATK sesuai dengan kesamaan karakteristiknya.
 <ul>
 <li>Apakah bisa dibuat strategi berdasarkan kelompok ATK yang dibuat?</li>
@@ -886,6 +862,32 @@ Departemen Market Research
 </table>
 </div>
 </div>
+</section>
+<section id="tujuan" class="slide level2 center">
+<h2>Tujuan</h2>
+<p>Tujuan utama dari analisa ini adalah <strong>memberikan masukan berupa strategi pemenuhan ATK</strong> kepada tim <em>office</em>, yakni bagaimana melakukan <em>inbound</em> dan <em>outbound</em> dari ATK yang ada.</p>
+</section>
+<section id="tujuan-1" class="slide level2 center unlisted unnumbered">
+<h2>Tujuan</h2>
+<p><strong>Kunci pemenuhan ATK</strong> terletak dari bagaimana tim <em>office</em> <strong>membeli dan melakukan proses</strong> <em>stocking</em> yang baik.</p>
+<blockquote>
+<p>Oleh karena itu, kami tidak menggunakan <em>dataset</em> pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari <em>dataset</em> tersebut.</p>
+</blockquote>
+<ul>
+<li>Kenapa hanya variabel <code>harga</code> saja yang dianggap penting dari <em>dataset</em> pembelian ATK?
+<ul>
+<li>Karena kita bisa membuat pengelompokkan berdasarkan <code>harga</code> yang ada.</li>
+</ul></li>
+</ul>
+</section>
+<section id="tujuan-2" class="slide level2 center unlisted unnumbered">
+<h2>Tujuan</h2>
+<p>Untuk bisa membeli ATK dengan tepat, kita bisa membagi ATK menjadi kelompok-kelompok yang memiliki karakteristik yang sama.</p>
+<p>Pada analisa ini, kami akan mencari karakteristik dari semua ATK berdasarkan dua variabel yang menurut kami paling penting dalam menentukan strategi pembelian, yakni:</p>
+<ol type="1">
+<li><strong>Harga</strong> dan</li>
+<li><strong>Banyaknya</strong> <strong><em>request</em></strong> terhadap ATK tersebut pada tahun 2023.</li>
+</ol>
 </section></section>
 <section>
 <section id="clustering-analysis" class="title-slide slide level1 center">
@@ -984,17 +986,90 @@ Departemen Market Research
 <p>Kita bisa dapatkan empat kuadran sebagai berikut:</p>
 <div class="cell">
 <ol type="1">
-<li><strong>Kuadran 1</strong>, yakni ATK yang memiliki <em>high price</em> dan <em>high demand</em>.</li>
-<li><strong>Kuadran 2</strong>, yakni ATK yang memiliki <em>high price</em> dan <em>low demand</em>.</li>
-<li><strong>Kuadran 3</strong>, yakni ATK yang memiliki <em>low price</em> dan <em>low demand</em>.</li>
-<li><strong>Kuadran 4</strong>, yakni ATK yang memiliki <em>low price</em> dan <em>high demand</em>.</li>
+<li><strong>Kuadran 1</strong>, yakni berisi <code>14</code> buah ATK yang memiliki <code>high price</code> dan <code>high demand</code>.</li>
+<li><strong>Kuadran 2</strong>, yakni berisi <code>17</code> buah ATK yang memiliki <code>high price</code> dan <code>low demand</code>.</li>
+<li><strong>Kuadran 3</strong>, yakni berisi <code>16</code> buah ATK yang memiliki <code>low price</code> dan <code>low demand</code>.</li>
+<li><strong>Kuadran 4</strong>, yakni berisi <code>15</code> buah ATK yang memiliki <code>low price</code> dan <code>high demand</code>.</li>
 </ol>
 </div>
+</section></section>
+<section>
+<section id="strategi-per-kuadran" class="title-slide slide level1 center">
+<h1>Strategi per Kuadran</h1>
+
+</section>
+<section id="strategi-kuadran-i" class="slide level2">
+<h2>Strategi Kuadran I</h2>
+<h3 id="high-price---high-demand"><em>High Price - High Demand</em></h3>
+<ul>
+<li>Melakukan pembelian ATK secara berkala (pada waktu tertentu - tidak di setiap bulan) tergantung dari siklus permintaan ATK dari <em>user</em>.
+<ul>
+<li>Perhitungan stok bisa dihitung dari total permintaan ATK untuk beberapa bulan sebelum pembelian.</li>
+<li>Overstok masih diperbolehkan.</li>
+</ul></li>
+<li>Oleh karena harga ATK mahal dan diperlukan banyak, kita bisa meminta diskon khusus kepada <em>supplier</em>.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Sebagai contoh, berikut adalah transaksi <em>inbound</em> dan <em>outbound</em> dari beberapa ATK pada kuadran I:</p>
+
+<img data-src="Kunci_files/figure-revealjs/unnamed-chunk-14-1.svg" class="r-stretch quarto-figure-center"></section>
+<section id="strategi-kuadran-ii" class="slide level2">
+<h2>Strategi Kuadran II</h2>
+<h3 id="high-price---low-demand"><em>High Price - Low Demand</em></h3>
+<ul>
+<li>Melakukan pembelian ATK secara hati-hati agar tidak overstok.
+<ul>
+<li>Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, <strong>ATAU</strong></li>
+<li>Pembelian dilakukan ketika ada permintaan namun <em>user</em> bisa diinformasikan mengenai <em>leadtime</em> pengadaan ATK.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Sebagai contoh, berikut adalah transaksi <em>inbound</em> dan <em>outbound</em> dari beberapa ATK pada kuadran II:</p>
+
+<img data-src="Kunci_files/figure-revealjs/unnamed-chunk-15-1.svg" class="r-stretch quarto-figure-center"></section>
+<section id="strategi-kuadran-iii" class="slide level2">
+<h2>Strategi Kuadran III</h2>
+<h3 id="low-price---low-demand"><em>Low Price - Low Demand</em></h3>
+<ul>
+<li>Melakukan pembelian ATK secara hati-hati agar tidak overstok.
+<ul>
+<li>Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, <strong>ATAU</strong></li>
+<li>Oleh karena ATK ini termasuk ke dalam kategori <em>low price</em>, bisa diasumsikan bahwa produk ATK ini memiliki <em>leadtime</em> yang juga cepat. Maka kita bisa lakukan pembelian secara mendadak saat ada permintaan. Tidak perlu ada stok yang disimpan.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Sebagai contoh, berikut adalah transaksi <em>inbound</em> dan <em>outbound</em> dari beberapa ATK pada kuadran III:</p>
+
+<img data-src="Kunci_files/figure-revealjs/unnamed-chunk-16-1.svg" class="r-stretch quarto-figure-center"></section>
+<section id="strategi-kuadran-iv" class="slide level2">
+<h2>Strategi Kuadran IV</h2>
+<h3 id="low-price---high-demand"><em>Low Price - High Demand</em></h3>
+<ul>
+<li>Melakukan pembelian ATK dengan mempertimbangkan stok aman masing-masing ATK pada waktu yang dibutuhkan.
+<ul>
+<li>Perhitungan <em>safety stok</em> bisa memanfaatkan prinsip perhitungan DOI ATK agar tidak terjadi overstok.</li>
+</ul></li>
+<li>Oleh karena ATK ini termasuk ke dalam kategori <em>low price</em>, bisa diasumsikan bahwa produk ATK ini memiliki <em>leadtime</em> yang juga cepat.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Sebagai contoh, berikut adalah transaksi <em>inbound</em> dan <em>outbound</em> dari beberapa ATK pada kuadran IV:</p>
+
+<img data-src="Kunci_files/figure-revealjs/unnamed-chunk-17-1.svg" class="r-stretch quarto-figure-center"></section></section>
+<section id="terima-kasih" class="title-slide slide level1 center">
+<h1>Terima Kasih</h1>
 
 <img src="logo.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Melek Data Series</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

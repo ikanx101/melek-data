@@ -1,0 +1,4 @@
+- source: Kunci.qmd
+  quarto-pub:
+    - id: 749d58b6-9e10-43f1-8198-a7a2de76fe67
+      url: 'https://ikanx101.quarto.pub/workshop-melek-data'
