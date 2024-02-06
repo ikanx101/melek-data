@@ -1,7 +1,6 @@
 ---
-subtitle: "Alternatif Jawaban: Permasalahan Pemenuhan ATK Office"
 title: "Workshop Melek Data"
-author: "Departemen Market Research"
+author: "Departemen Market Research x Digital Transformation x Training HR"
 institute: Nutrifood Indonesia
 format: 
   revealjs:
@@ -40,6 +39,10 @@ library(dplyr)
 library(ggplot2)
 library(epoxy)
 ```
+
+## Tentang _Workshop_ {.center}
+
+Berbeda dengan _training series_ melek data yang sebelumnya.
 
 # Pendahuluan
 
@@ -300,8 +303,6 @@ tabel_2 |>
   knitr::kable(align = "c",caption = "Total Serah Terima ATK per Bulan (10 ATK Teratas - Diurutkan dari Angka Tahun 2023)")
 ```
 
-
-
 ## Tujuan {.center}
 
 Tujuan utama dari analisa ini adalah **memberikan masukan berupa strategi pemenuhan ATK** kepada tim *office*, yakni bagaimana melakukan *inbound* dan *outbound* dari ATK yang ada.
@@ -312,9 +313,9 @@ Tujuan utama dari analisa ini adalah **memberikan masukan berupa strategi pemenu
 
 > Oleh karena itu, kami tidak menggunakan *dataset* pembelian ATK. Kami hanya mengambil variabel harga dari masing-masing ATK dari *dataset* tersebut.
 
-- Kenapa hanya variabel `harga` saja yang dianggap penting dari _dataset_ pembelian ATK?
-    - Karena kita bisa membuat pengelompokkan berdasarkan `harga` yang ada.
-    
+-   Kenapa hanya variabel `harga` saja yang dianggap penting dari *dataset* pembelian ATK?
+    -   Karena kita bisa membuat pengelompokkan berdasarkan `harga` yang ada.
+
 ## Tujuan {.center .unlisted .unnumbered}
 
 Untuk bisa membeli ATK dengan tepat, kita bisa membagi ATK menjadi kelompok-kelompok yang memiliki karakteristik yang sama.
@@ -323,7 +324,6 @@ Pada analisa ini, kami akan mencari karakteristik dari semua ATK berdasarkan dua
 
 1.  **Harga** dan
 2.  **Banyaknya** ***request*** terhadap ATK tersebut pada tahun 2023.
-
 
 # *Clustering Analysis*
 
@@ -495,14 +495,14 @@ x_temp %>%
 
 ## Strategi Kuadran I
 
-### _High Price - High Demand_
+### *High Price - High Demand*
 
 -   Melakukan pembelian ATK secara berkala (pada waktu tertentu - tidak di setiap bulan) tergantung dari siklus permintaan ATK dari *user*.
     -   Perhitungan stok bisa dihitung dari total permintaan ATK untuk beberapa bulan sebelum pembelian.
     -   Overstok masih diperbolehkan.
 -   Oleh karena harga ATK mahal dan diperlukan banyak, kita bisa meminta diskon khusus kepada *supplier*.
 
----
+------------------------------------------------------------------------
 
 Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran I:
 
@@ -524,13 +524,13 @@ ggpubr::ggarrange(p1,p2,p3,ncol = 3)
 
 ## Strategi Kuadran II
 
-### _High Price - Low Demand_
+### *High Price - Low Demand*
 
 -   Melakukan pembelian ATK secara hati-hati agar tidak overstok.
     -   Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, **ATAU**
     -   Pembelian dilakukan ketika ada permintaan namun *user* bisa diinformasikan mengenai *leadtime* pengadaan ATK.
 
----
+------------------------------------------------------------------------
 
 Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran II:
 
@@ -550,16 +550,15 @@ p3 = plot_detail(item_sel)
 ggpubr::ggarrange(p1,p2,p3,ncol = 3)
 ```
 
-
 ## Strategi Kuadran III
 
-### _Low Price - Low Demand_
+### *Low Price - Low Demand*
 
 -   Melakukan pembelian ATK secara hati-hati agar tidak overstok.
     -   Kuantitas pembelian bisa dihitung dari total permintaan historikal pada tahun lalu dan pembelian dilakukan cukup sekali saja per tahun, **ATAU**
     -   Oleh karena ATK ini termasuk ke dalam kategori *low price*, bisa diasumsikan bahwa produk ATK ini memiliki *leadtime* yang juga cepat. Maka kita bisa lakukan pembelian secara mendadak saat ada permintaan. Tidak perlu ada stok yang disimpan.
 
----
+------------------------------------------------------------------------
 
 Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran III:
 
@@ -579,16 +578,15 @@ p3 = plot_detail(item_sel)
 ggpubr::ggarrange(p1,p2,p3,ncol = 3)
 ```
 
-
 ## Strategi Kuadran IV
 
-### _Low Price - High Demand_
+### *Low Price - High Demand*
 
 -   Melakukan pembelian ATK dengan mempertimbangkan stok aman masing-masing ATK pada waktu yang dibutuhkan.
     -   Perhitungan *safety stok* bisa memanfaatkan prinsip perhitungan DOI ATK agar tidak terjadi overstok.
 -   Oleh karena ATK ini termasuk ke dalam kategori *low price*, bisa diasumsikan bahwa produk ATK ini memiliki *leadtime* yang juga cepat.
 
----
+------------------------------------------------------------------------
 
 Sebagai contoh, berikut adalah transaksi *inbound* dan *outbound* dari beberapa ATK pada kuadran IV:
 
@@ -608,6 +606,4 @@ p3 = plot_detail(item_sel)
 ggpubr::ggarrange(p1,p2,p3,ncol = 3)
 ```
 
-
 # Terima Kasih
-
